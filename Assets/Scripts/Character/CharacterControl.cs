@@ -27,7 +27,7 @@ public class CharacterControl : MonoBehaviour
 	private bool			_isShurikenThrown;
 	private Transform		_shurikenSpawnPoint;
 
-	private int				_characterHealth;
+	
 	private int				_maxCharacterHealth;
 	#endregion
 
@@ -39,6 +39,8 @@ public class CharacterControl : MonoBehaviour
 	public CharacterState	currentCharacterState;
 
 	public Transform		shurikenPrefab;
+
+    public int             characterHealth;
 	#endregion
 
 	#region Constructor
@@ -63,7 +65,7 @@ public class CharacterControl : MonoBehaviour
 
 		/*Character Parameters*/
 		_maxCharacterHealth = 3;
-		_characterHealth = _maxCharacterHealth;
+		characterHealth = _maxCharacterHealth;
 
 		_characterControlEnabled = true;
 	}
@@ -78,7 +80,7 @@ public class CharacterControl : MonoBehaviour
 			{
 				if(_thrownShuriken != null)
 				{
-					if(Input.GetKeyDown(KeyCode.E))
+					if(Input.GetButtonDown("Fire2"))
 					{
 						transform.position = new Vector3(_thrownShuriken.position.x, _thrownShuriken.position.y, transform.position.z);
 
@@ -148,14 +150,18 @@ public class CharacterControl : MonoBehaviour
 				}
 				break;
 			case CharacterState.Dead:
+                    print("I m dead!");
 				break;
 			}
 		}
 	}
 
-	void OnCollision2DEnter()
-	{
-	}
+    void OnCollisionEnter2D(Collision2D coll) {
+        if (coll.gameObject.tag == "Enemy")
+            coll.gameObject.SendMessage("ApplyDamage", 10);
+        
+    }
+
 	#endregion
 
 	#region Methods
@@ -256,13 +262,15 @@ public class CharacterControl : MonoBehaviour
 	#region Public Methods
 	public void OnDamage(int damage)
 	{
-		_characterHealth--;
+		characterHealth--;
 
-		if(_characterHealth <= 0)
+		if(characterHealth <= 0)
 		{
 			currentCharacterState = CharacterState.Dead;
 
-			_characterHealth = _maxCharacterHealth;
+            _characterControlEnabled = false;
+
+			characterHealth = _maxCharacterHealth;
 		}
 	}
 	#endregion

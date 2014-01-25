@@ -69,8 +69,10 @@ public class EnemyAI : MonoBehaviour
                     Patrol();
                     break;
                 case EnemyState.Attack:
+                    Attack();
                     break;
                 case EnemyState.Die:
+                    Die();
                     break;
             }
 
@@ -162,7 +164,7 @@ public class EnemyAI : MonoBehaviour
 
     void Die()
     {
-
+        Destroy(gameObject);
     }
 
     bool OutOfBound()
@@ -181,5 +183,10 @@ public class EnemyAI : MonoBehaviour
         Gizmos.color = Color.green;
 //        Gizmos.DrawRay(raycastPoint.transform.position, transform.right);
         Gizmos.DrawWireCube(detectingPoint.position, new Vector3(2f * checkRect.x, 2f * checkRect.y, 0f));
+    }
+
+    void OnDamage()
+    {
+
     }
 }
