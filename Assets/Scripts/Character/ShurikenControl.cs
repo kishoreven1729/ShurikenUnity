@@ -6,21 +6,23 @@ using System.Collections;
 public class ShurikenControl : MonoBehaviour 
 {
 	#region Private Variables
-	private float		_shurikenLifespan;
+	
 	private float		_shurikenDisappearanceTime;
+    private Vector2     finalShurikenForce;
 	#endregion
 
 	#region Public Variables
-	public Vector2		finalShurikenForce;
+	
 	public Vector2		_shurikenForce;
+    public float        _shurikenLifespan;
 	#endregion
 
 	#region Constructor
 	void Awake()
 	{
-		_shurikenForce = new Vector2(750.0f, 350.0f);
+//		_shurikenForce = new Vector2(750.0f, 350.0f);
 
-		_shurikenLifespan = 2.5f;
+//		_shurikenLifespan = 2.5f;
 
 		_shurikenDisappearanceTime = -1.0f;
 	}

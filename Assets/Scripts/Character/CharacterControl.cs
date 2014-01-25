@@ -48,7 +48,7 @@ public class CharacterControl : MonoBehaviour
 	{
 		_characterAnimator = GetComponent<Animator>();
 
-		movementSpeed = 10.0f;
+//		movementSpeed = 10.0f;
 		movementDirection = Vector2.zero;
 
 		currentCharacterState = CharacterState.Idle;
@@ -157,8 +157,13 @@ public class CharacterControl : MonoBehaviour
 	}
 
     void OnCollisionEnter2D(Collision2D coll) {
+
+        print(coll.gameObject);
         if (coll.gameObject.tag == "Enemy")
-            coll.gameObject.SendMessage("ApplyDamage", 10);
+        {
+            print("HitTheEnemy!!");
+            coll.gameObject.SendMessage("OnDamage");
+        }
         
     }
 
@@ -241,8 +246,8 @@ public class CharacterControl : MonoBehaviour
 		Vector3 mousePosition3D = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
 		Vector2 mousePosition2D = new Vector2(mousePosition3D.x, mousePosition3D.y);
 
-		Debug.Log("Character2DPosition: " + character2DPosition);
-		Debug.Log("MousePosition: " + mousePosition2D);
+//		Debug.Log("Character2DPosition: " + character2DPosition);
+//		Debug.Log("MousePosition: " + mousePosition2D);
 
 		Vector2 shurikenDirection = mousePosition2D - character2DPosition;
 		shurikenDirection.Normalize();

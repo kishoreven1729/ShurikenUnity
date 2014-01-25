@@ -164,7 +164,7 @@ public class EnemyAI : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, 3f);
     }
 
     bool OutOfBound()
@@ -187,6 +187,10 @@ public class EnemyAI : MonoBehaviour
 
     void OnDamage()
     {
+        state = EnemyState.Die;
+        rigidbody2D.isKinematic = true;
+//        rigidbody2D.Sleep();
 
+        GetComponent<BoxCollider2D>().enabled = false;
     }
 }
