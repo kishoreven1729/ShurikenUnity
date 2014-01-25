@@ -26,6 +26,9 @@ public class CharacterControl : MonoBehaviour
 	private Transform		_thrownShuriken;
 	private bool			_isShurikenThrown;
 	private Transform		_shurikenSpawnPoint;
+
+	private int				_characterHealth;
+	private int				_maxCharacterHealth;
 	#endregion
 
 	#region Public Variables
@@ -58,6 +61,10 @@ public class CharacterControl : MonoBehaviour
 		_isShurikenThrown = false;
 		_shurikenSpawnPoint = transform.Find("ShurikenSpawnPoint");
 
+		/*Character Parameters*/
+		_maxCharacterHealth = 3;
+		_characterHealth = _maxCharacterHealth;
+
 		_characterControlEnabled = true;
 	}
 	#endregion
@@ -65,22 +72,30 @@ public class CharacterControl : MonoBehaviour
 	#region Loop
 	void Update()
 	{
-		if(_isShurikenThrown == true)
+		if(currentCharacterState != CharacterState.Dead)
 		{
-			if(_thrownShuriken != null)
+			if(_isShurikenThrown == true)
 			{
-				if(Input.GetKeyDown(KeyCode.E))
+				if(_thrownShuriken != null)
 				{
-					transform.position = new Vector3(_thrownShuriken.position.x, _thrownShuriken.position.y, transform.position.z);
+					if(Input.GetKeyDown(KeyCode.E))
+					{
+						transform.position = new Vector3(_thrownShuriken.position.x, _thrownShuriken.position.y, transform.position.z);
 
-					_isShurikenThrown = false;
+						if(currentCharacterState != CharacterState.Dash)
+						{
+							CharacterIdle();
+						}
 
-					_thrownShuriken.SendMessage("DestoryShuriken", SendMessageOptions.DontRequireReceiver);
+						_isShurikenThrown = false;
+
+						_thrownShuriken.SendMessage("DestoryShuriken", SendMessageOptions.DontRequireReceiver);
+					}
 				}
-			}
-			else
-			{
-				_isShurikenThrown = false;
+				else
+				{
+					_isShurikenThrown = false;
+				}
 			}
 		}
 
@@ -102,16 +117,22 @@ public class CharacterControl : MonoBehaviour
 
 			if(Input.GetKey(KeyCode.LeftShift))
 			{
-				_characterControlEnabled = false;
+				if(movementDirection != Vector2.zero)
+				{
+					_characterControlEnabled = false;
 
-				_dashEndTime = Time.time + _dashTime;
+					_dashEndTime = Time.time + _dashTime;
 
-				currentCharacterState = CharacterState.Dash;
+					currentCharacterState = CharacterState.Dash;
+				}
 			}
 
 			if(Input.GetButtonDown("Fire1"))
 			{
-				CharacterShoot();
+				if(_thrownShuriken == null)
+				{
+					CharacterShoot();
+				}
 			}
 
 			UpdateCharacterState();
@@ -125,6 +146,8 @@ public class CharacterControl : MonoBehaviour
 				{
 					_characterControlEnabled = true;
 				}
+				break;
+			case CharacterState.Dead:
 				break;
 			}
 		}
@@ -209,9 +232,13 @@ public class CharacterControl : MonoBehaviour
 		_thrownShuriken.name = "Shuriken";
 
 		Vector2 character2DPosition = new Vector2(transform.position.x, transform.position.y);
-		Vector2 mousePosition = Input.mousePosition;
+		Vector3 mousePosition3D = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
+		Vector2 mousePosition2D = new Vector2(mousePosition3D.x, mousePosition3D.y);
 
-		Vector2 shurikenDirection = mousePosition - character2DPosition;
+		Debug.Log("Character2DPosition: " + character2DPosition);
+		Debug.Log("MousePosition: " + mousePosition2D);
+
+		Vector2 shurikenDirection = mousePosition2D - character2DPosition;
 		shurikenDirection.Normalize();
 
 		_thrownShuriken.SendMessage("SetupShot", shurikenDirection, SendMessageOptions.DontRequireReceiver);
@@ -223,6 +250,20 @@ public class CharacterControl : MonoBehaviour
 		_characterAnimator.SetBool("Run", false);
 		_characterAnimator.SetBool("Dash", false);
 		_characterAnimator.SetBool("Dead", false);
+	}
+	#endregion
+
+	#region Public Methods
+	public void OnDamage(int damage)
+	{
+		_characterHealth--;
+
+		if(_characterHealth <= 0)
+		{
+			currentCharacterState = CharacterState.Dead;
+
+			_characterHealth = _maxCharacterHealth;
+		}
 	}
 	#endregion
 }

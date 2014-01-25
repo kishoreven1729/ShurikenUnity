@@ -6,16 +6,23 @@ using System.Collections;
 public class ShurikenControl : MonoBehaviour 
 {
 	#region Private Variables
-	private float		_shurikenForce;
+	private float		_shurikenLifespan;
+	private float		_shurikenDisappearanceTime;
 	#endregion
 
 	#region Public Variables
+	public Vector2		finalShurikenForce;
+	public Vector2		_shurikenForce;
 	#endregion
 
 	#region Constructor
 	void Awake()
 	{
-		_shurikenForce = 750.0f;
+		_shurikenForce = new Vector2(750.0f, 350.0f);
+
+		_shurikenLifespan = 2.5f;
+
+		_shurikenDisappearanceTime = -1.0f;
 	}
 
 	void Start() 
@@ -25,17 +32,20 @@ public class ShurikenControl : MonoBehaviour
 	
 	#region Loop
 	void Update() 
-	{	
+	{
+		if(_shurikenDisappearanceTime > 0.0f)
+		{
+			if(Time.time > _shurikenDisappearanceTime)
+			{
+				DestoryShuriken();
+			}
+		}
 	}
 
-	void OnCollision2DEnter(Collision2D collision)
+	void OnCollisionEnter2D(Collision2D collision)
 	{
-		Debug.Log("Coillision Detected");
-
 		if(collision.collider.CompareTag("Ground"))
 		{
-			Debug.Log("Collision Detected");
-
 			rigidbody2D.Sleep();
 
 			DestoryShuriken();
@@ -51,7 +61,11 @@ public class ShurikenControl : MonoBehaviour
 
 	public void SetupShot(Vector2 direction)
 	{
-		rigidbody2D.AddForce(direction * _shurikenForce);
+		Vector2 shurikenShootingForce = new Vector2(direction.x * _shurikenForce.x, direction.y * _shurikenForce.y);
+
+		rigidbody2D.AddForce(shurikenShootingForce);
+
+		_shurikenDisappearanceTime = Time.time + _shurikenLifespan;
 	}
 	#endregion
 }
