@@ -143,7 +143,7 @@ public class EnemyAI : MonoBehaviour
 //        RaycastHit2D hit = Physics2D.Raycast(raycastPoint.transform.position, transform.right, attackRange);
 
         Vector2 v = new Vector2(detectingPoint.position.x, detectingPoint.position.y);
-        print(v);
+//        print(v);
 
         Collider2D c2d = Physics2D.OverlapArea(v - checkRect, v + checkRect);
 

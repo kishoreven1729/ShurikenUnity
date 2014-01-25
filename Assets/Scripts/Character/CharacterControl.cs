@@ -158,10 +158,10 @@ public class CharacterControl : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll) {
 
-        print(coll.gameObject);
+        print(coll.transform.tag);
         if (coll.gameObject.tag == "Enemy")
         {
-            print("HitTheEnemy!!");
+//            print("HitTheEnemy!!");
             coll.gameObject.SendMessage("OnDamage");
         }
         
