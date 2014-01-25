@@ -49,7 +49,7 @@ public class EnemyAI : MonoBehaviour
         initPosition = transform.position;
 
         boundaries [0] = initPosition.x - moveRange;
-        boundaries [1] = initPosition.y + moveRange;
+        boundaries [1] = initPosition.x + moveRange;
 
         currentSpeed = maxSpeed;
 
