@@ -239,18 +239,28 @@ public class CharacterControl : MonoBehaviour
 	{
 		_isShurikenThrown = true;
 
-		_thrownShuriken = Instantiate(shurikenPrefab, _shurikenSpawnPoint.position, Quaternion.identity) as Transform;
-		_thrownShuriken.name = "Shuriken";
-
 		Vector2 character2DPosition = new Vector2(transform.position.x, transform.position.y);
 		Vector3 mousePosition3D = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
 		Vector2 mousePosition2D = new Vector2(mousePosition3D.x, mousePosition3D.y);
+
 
 //		Debug.Log("Character2DPosition: " + character2DPosition);
 //		Debug.Log("MousePosition: " + mousePosition2D);
 
 		Vector2 shurikenDirection = mousePosition2D - character2DPosition;
 		shurikenDirection.Normalize();
+
+		if(shurikenDirection.x < 0.0f)
+		{
+			transform.localScale = new Vector3(-1, 1, 1);
+		}
+		else
+		{
+			transform.localScale = new Vector3(1, 1, 1);
+		}
+
+		_thrownShuriken = Instantiate(shurikenPrefab, _shurikenSpawnPoint.position, Quaternion.identity) as Transform;
+		_thrownShuriken.name = "Shuriken";
 
 		_thrownShuriken.SendMessage("SetupShot", shurikenDirection, SendMessageOptions.DontRequireReceiver);
 	}
