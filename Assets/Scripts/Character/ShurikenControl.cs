@@ -69,6 +69,7 @@ public class ShurikenControl : MonoBehaviour
 
     void OnDestroy()
     {
+        GameManager.Instance._shurikenLaunched = false;
         CharacterFollow.characterFollowInstance.ChangeTargetToCharacter();
     }
 	#endregion

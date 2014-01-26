@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
     public int currentCheckPoint = 0;
     public bool isWin = false;
 
+    public bool            _shurikenLaunched = false;
+
     public Dictionary<int, GameObject> CheckPoints
     {
         get

@@ -31,6 +31,8 @@ public class CheckPoint : MonoBehaviour {
     public void Spawn()
     {
         GameObject go = Instantiate(playerPrefab, transform.position, Quaternion.identity) as GameObject;
-        Camera.main.SendMessage("SetTarget", go);
+//        Camera.main.SendMessage("SetTarget", go);
+        CharacterFollow.characterFollowInstance.target = go.transform;
+//        CharacterFollow.characterFollowInstance.ChangeTargetToCharacter();
     }
 }
