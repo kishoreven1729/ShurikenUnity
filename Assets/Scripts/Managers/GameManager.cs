@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 //    public GameObject[] checkPoints;
     public Dictionary<int, GameObject> checkPoints = new Dictionary<int, GameObject>();
     public int currentCheckPoint = 0;
+    public bool isWin = false;
 
     public Dictionary<int, GameObject> CheckPoints
     {
@@ -59,5 +60,14 @@ public class GameManager : MonoBehaviour {
     public void SpawnPlayerAtCheckPoint()
     {
         checkPoints[currentCheckPoint].SendMessage("Spawn");
+    }
+
+    public void Win()
+    {
+        if (!isWin)
+        {
+            print("win!");
+            isWin = true;
+        }
     }
 }
