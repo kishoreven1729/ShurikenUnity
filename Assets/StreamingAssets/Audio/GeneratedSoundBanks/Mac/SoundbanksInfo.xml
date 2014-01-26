@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SoundBanksInfo Platform="Windows" SchemaVersion="9">
+<SoundBanksInfo Platform="Mac" SchemaVersion="9">
 	<RootPaths>
 		<ProjectRoot>C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<SourceFilesRoot>C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Mac\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\GeneratedSoundBanks\Mac\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\GeneratedSoundBanks\Mac</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents />
 	<StreamedFiles />
@@ -42,6 +42,7 @@
 				<Event Id="387947175" Name="Play_Shuriken_Collision_Robot" />
 				<Event Id="733338729" Name="Play_Shuriken_Collision_Wall" />
 				<Event Id="4175555896" Name="Play_Shuriken_Loop" />
+				<Event Id="2891690867" Name="Play_Shuriken_Music_001" />
 				<Event Id="16142425" Name="Play_Shuriken_Release" />
 				<Event Id="1158114989" Name="Stop_Background_loop" />
 				<Event Id="3237887829" Name="Stop_Garbage_Compressor_DownMovement" />
@@ -61,6 +62,7 @@
 				<Event Id="1503400553" Name="Stop_Shuriken_Collision_Robot" />
 				<Event Id="310081491" Name="Stop_Shuriken_Collision_Wall" />
 				<Event Id="115136214" Name="Stop_Shuriken_Loop" />
+				<Event Id="4233470777" Name="Stop_Shuriken_Music_001" />
 				<Event Id="1317693067" Name="Stop_Shuriken_Release" />
 			</IncludedEvents>
 			<IncludedDialogueEvents />
@@ -289,6 +291,10 @@
 				<File Id="12362363" Language="SFX">
 					<ShortName>Robot_Walk\Robot_Walk4.wav</ShortName>
 					<Path>sfx\robot_walk\robot_walk4_ddc98ef4.wem</Path>
+				</File>
+				<File Id="531852897" Language="SFX">
+					<ShortName>Shuriken Music 001.wav</ShortName>
+					<Path>sfx\shuriken music 001_ddc98ef4.wem</Path>
 				</File>
 				<File Id="81853134" Language="SFX">
 					<ShortName>Shuriken_Loop.wav</ShortName>

@@ -42,13 +42,16 @@ public class AudioManager : MonoBehaviour
 	
 	void Start() 
 	{
-		_soundBankName = "";
+		_soundBankName = "Shuriken_Game";
 
 		if(AkSoundEngine.IsInitialized() == true)
 		{
 			uint soundBankID;
 			AkSoundEngine.LoadBank(_soundBankName, AkSoundEngine.AK_DEFAULT_POOL_ID, out soundBankID);
 		}
+
+		_backgroundSoundID = AK.EVENTS.PLAY_BACKGROUND_LOOP;
+		_backgroundSoundtrackID = AK.EVENTS.PLAY_SHURIKEN_MUSIC_001;
 
 		/*_backgroundSoundID = AK.EVENTS.PLAY_TRAIN_AMBIANCE; 
 		_backgroundSpeedParameterID = AK.GAME_PARAMETERS.TRAIN_SPEED;
@@ -134,11 +137,11 @@ public class AudioManager : MonoBehaviour
 	{
 		_soundDictionary = new Dictionary<string, uint>();
 
+		_soundDictionary.Add("ShurikenRelease", AK.EVENTS.PLAY_SHURIKEN_RELEASE);
+		_soundDictionary.Add("Run", AK.EVENTS.PLAY_NINJA_FOOTSTEPS);
+		_soundDictionary.Add("Dash", AK.EVENTS.PLAY_NINJA_DASH);
+		_soundDictionary.Add("Teleport", AK.EVENTS.PLAY_NINJA_TELEPORT_DISAPPEAR);
 		/*_soundDictionary.Add("", AK.EVENTS.);
-		_soundDictionary.Add("", AK.EVENTS.);
-		_soundDictionary.Add("", AK.EVENTS.);
-		_soundDictionary.Add("", AK.EVENTS.);
-		_soundDictionary.Add("", AK.EVENTS.);
 		_soundDictionary.Add("", AK.EVENTS.);
 		_soundDictionary.Add("", AK.EVENTS.);
 		_soundDictionary.Add("", AK.EVENTS.);

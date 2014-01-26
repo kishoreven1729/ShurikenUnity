@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" SchemaVersion="9">
+	<RootPaths>
+		<ProjectRoot>C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents />
+	<StreamedFiles />
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<IncludedEvents />
+			<IncludedDialogueEvents />
+			<ReferencedStreamedFiles />
+			<IncludedFullFiles />
+			<IncludedPrefetchFiles />
+			<ExternalSources />
+		</SoundBank>
+		<SoundBank Id="3149240309" Language="SFX">
+			<ShortName>Shuriken_Game</ShortName>
+			<Path>Shuriken_Game.bnk</Path>
+			<IncludedEvents>
+				<Event Id="991305627" Name="Play_Background_loop" />
+				<Event Id="906521951" Name="Play_Garbage_Compressor_DownMovement" />
+				<Event Id="3471277484" Name="Play_Garbage_Compressor_UpMovement" />
+				<Event Id="1389842473" Name="Play_Ninja_Dash" />
+				<Event Id="4262683012" Name="Play_Ninja_Dash_Kill" />
+				<Event Id="1680145865" Name="Play_Ninja_Death" />
+				<Event Id="2546651310" Name="Play_Ninja_Footsteps" />
+				<Event Id="927590349" Name="Play_Ninja_kill" />
+				<Event Id="2085749092" Name="Play_Ninja_Land_Ground_Silent" />
+				<Event Id="3834340392" Name="Play_Ninja_Roll" />
+				<Event Id="3800083062" Name="Play_Ninja_Teleport_Disappear" />
+				<Event Id="1777239403" Name="Play_Ninja_Teleport_Reappear" />
+				<Event Id="2426976433" Name="Play_Robot_Death" />
+				<Event Id="1335336558" Name="Play_Robot_Laser" />
+				<Event Id="4233708478" Name="Play_Robot_Walk" />
+				<Event Id="387947175" Name="Play_Shuriken_Collision_Robot" />
+				<Event Id="733338729" Name="Play_Shuriken_Collision_Wall" />
+				<Event Id="4175555896" Name="Play_Shuriken_Loop" />
+				<Event Id="2891690867" Name="Play_Shuriken_Music_001" />
+				<Event Id="16142425" Name="Play_Shuriken_Release" />
+				<Event Id="1158114989" Name="Stop_Background_loop" />
+				<Event Id="3237887829" Name="Stop_Garbage_Compressor_DownMovement" />
+				<Event Id="2343109494" Name="Stop_Garbage_Compressor_UpMovement" />
+				<Event Id="1093930843" Name="Stop_Ninja_Dash" />
+				<Event Id="3505612506" Name="Stop_Ninja_Dash_Kill" />
+				<Event Id="860357291" Name="Stop_Ninja_Death" />
+				<Event Id="3262222180" Name="Stop_Ninja_Footsteps" />
+				<Event Id="2378469599" Name="Stop_Ninja_kill" />
+				<Event Id="1455659358" Name="Stop_Ninja_Land_Ground_Silent" />
+				<Event Id="3044962766" Name="Stop_Ninja_Roll" />
+				<Event Id="3920229824" Name="Stop_Ninja_Teleport_Disappear" />
+				<Event Id="3902765985" Name="Stop_Ninja_Teleport_Reappear" />
+				<Event Id="1145831847" Name="Stop_Robot_Death" />
+				<Event Id="3262236172" Name="Stop_Robot_Laser" />
+				<Event Id="4156105688" Name="Stop_Robot_Walk" />
+				<Event Id="1503400553" Name="Stop_Shuriken_Collision_Robot" />
+				<Event Id="310081491" Name="Stop_Shuriken_Collision_Wall" />
+				<Event Id="115136214" Name="Stop_Shuriken_Loop" />
+				<Event Id="4233470777" Name="Stop_Shuriken_Music_001" />
+				<Event Id="1317693067" Name="Stop_Shuriken_Release" />
+			</IncludedEvents>
+			<IncludedDialogueEvents />
+			<ReferencedStreamedFiles />
+			<IncludedFullFiles>
+				<File Id="317991637" Language="SFX">
+					<ShortName>Background_loop.wav</ShortName>
+					<Path>sfx\background_loop_c9b8a6b2.wem</Path>
+				</File>
+				<File Id="955254996" Language="SFX">
+					<ShortName>Collision_Wall\Shuriken_Collision_Wall1.wav</ShortName>
+					<Path>sfx\collision_wall\shuriken_collision_wall1_ddc98ef4.wem</Path>
+				</File>
+				<File Id="858073874" Language="SFX">
+					<ShortName>Collision_Wall\Shuriken_Collision_Wall2.wav</ShortName>
+					<Path>sfx\collision_wall\shuriken_collision_wall2_ddc98ef4.wem</Path>
+				</File>
+				<File Id="103287221" Language="SFX">
+					<ShortName>Collision_Wall\Shuriken_Collision_Wall3.wav</ShortName>
+					<Path>sfx\collision_wall\shuriken_collision_wall3_ddc98ef4.wem</Path>
+				</File>
+				<File Id="406902668" Language="SFX">
+					<ShortName>Collision_Wall\Shuriken_Collision_Wall4.wav</ShortName>
+					<Path>sfx\collision_wall\shuriken_collision_wall4_ddc98ef4.wem</Path>
+				</File>
+				<File Id="501752990" Language="SFX">
+					<ShortName>Collision_Wall_Robot\Shuriken_Collision_Robot1.wav</ShortName>
+					<Path>sfx\collision_wall_robot\shuriken_collision_robot1_ddc98ef4.wem</Path>
+				</File>
+				<File Id="884524721" Language="SFX">
+					<ShortName>Collision_Wall_Robot\Shuriken_Collision_Robot2.wav</ShortName>
+					<Path>sfx\collision_wall_robot\shuriken_collision_robot2_ddc98ef4.wem</Path>
+				</File>
+				<File Id="457582990" Language="SFX">
+					<ShortName>Collision_Wall_Robot\Shuriken_Collision_Robot3.wav</ShortName>
+					<Path>sfx\collision_wall_robot\shuriken_collision_robot3_ddc98ef4.wem</Path>
+				</File>
+				<File Id="964917720" Language="SFX">
+					<ShortName>Collision_Wall_Robot\Shuriken_Collision_Robot4.wav</ShortName>
+					<Path>sfx\collision_wall_robot\shuriken_collision_robot4_ddc98ef4.wem</Path>
+				</File>
+				<File Id="784569363" Language="SFX">
+					<ShortName>Garbage_Compressor_DownMovement.wav</ShortName>
+					<Path>sfx\garbage_compressor_downmovement_ddc98ef4.wem</Path>
+				</File>
+				<File Id="200925885" Language="SFX">
+					<ShortName>Garbage_Compressor_UpMovement.wav</ShortName>
+					<Path>sfx\garbage_compressor_upmovement_ddc98ef4.wem</Path>
+				</File>
+				<File Id="1020691880" Language="SFX">
+					<ShortName>Ninja_Dash\Ninja_Dash1.wav</ShortName>
+					<Path>sfx\ninja_dash\ninja_dash1_ddc98ef4.wem</Path>
+				</File>
+				<File Id="678150808" Language="SFX">
+					<ShortName>Ninja_Dash\Ninja_Dash2.wav</ShortName>
+					<Path>sfx\ninja_dash\ninja_dash2_ddc98ef4.wem</Path>
+				</File>
+				<File Id="975826179" Language="SFX">
+					<ShortName>Ninja_Dash\Ninja_Dash3.wav</ShortName>
+					<Path>sfx\ninja_dash\ninja_dash3_ddc98ef4.wem</Path>
+				</File>
+				<File Id="438142331" Language="SFX">
+					<ShortName>Ninja_Dash\Ninja_Dash4.wav</ShortName>
+					<Path>sfx\ninja_dash\ninja_dash4_ddc98ef4.wem</Path>
+				</File>
+				<File Id="872159814" Language="SFX">
+					<ShortName>Ninja_Dash_Kill\Ninja_Dash_Kill1.wav</ShortName>
+					<Path>sfx\ninja_dash_kill\ninja_dash_kill1_ddc98ef4.wem</Path>
+				</File>
+				<File Id="728575607" Language="SFX">
+					<ShortName>Ninja_Dash_Kill\Ninja_Dash_Kill2.wav</ShortName>
+					<Path>sfx\ninja_dash_kill\ninja_dash_kill2_ddc98ef4.wem</Path>
+				</File>
+				<File Id="951393266" Language="SFX">
+					<ShortName>Ninja_Dash_Kill\Ninja_Dash_Kill3.wav</ShortName>
+					<Path>sfx\ninja_dash_kill\ninja_dash_kill3_ddc98ef4.wem</Path>
+				</File>
+				<File Id="620115578" Language="SFX">
+					<ShortName>Ninja_Death\Ninja_Death1.wav</ShortName>
+					<Path>sfx\ninja_death\ninja_death1_ddc98ef4.wem</Path>
+				</File>
+				<File Id="454158269" Language="SFX">
+					<ShortName>Ninja_Death\Ninja_Death2.wav</ShortName>
+					<Path>sfx\ninja_death\ninja_death2_ddc98ef4.wem</Path>
+				</File>
+				<File Id="813798879" Language="SFX">
+					<ShortName>Ninja_Death\Ninja_Death3.wav</ShortName>
+					<Path>sfx\ninja_death\ninja_death3_ddc98ef4.wem</Path>
+				</File>
+				<File Id="879962964" Language="SFX">
+					<ShortName>Ninja_Death\Ninja_Death4.wav</ShortName>
+					<Path>sfx\ninja_death\ninja_death4_ddc98ef4.wem</Path>
+				</File>
+				<File Id="925180120" Language="SFX">
+					<ShortName>Ninja_Footsteps\Ninja Footsteps1.wav</ShortName>
+					<Path>sfx\ninja_footsteps\ninja footsteps1_ddc98ef4.wem</Path>
+				</File>
+				<File Id="71458312" Language="SFX">
+					<ShortName>Ninja_Footsteps\Ninja Footsteps2.wav</ShortName>
+					<Path>sfx\ninja_footsteps\ninja footsteps2_ddc98ef4.wem</Path>
+				</File>
+				<File Id="82851937" Language="SFX">
+					<ShortName>Ninja_Footsteps\Ninja Footsteps3.wav</ShortName>
+					<Path>sfx\ninja_footsteps\ninja footsteps3_ddc98ef4.wem</Path>
+				</File>
+				<File Id="140538899" Language="SFX">
+					<ShortName>Ninja_Footsteps\Ninja Footsteps4.wav</ShortName>
+					<Path>sfx\ninja_footsteps\ninja footsteps4_ddc98ef4.wem</Path>
+				</File>
+				<File Id="486454064" Language="SFX">
+					<ShortName>Ninja_Footsteps\Ninja Footsteps5.wav</ShortName>
+					<Path>sfx\ninja_footsteps\ninja footsteps5_ddc98ef4.wem</Path>
+				</File>
+				<File Id="158802302" Language="SFX">
+					<ShortName>Ninja_Footsteps\Ninja Footsteps6.wav</ShortName>
+					<Path>sfx\ninja_footsteps\ninja footsteps6_ddc98ef4.wem</Path>
+				</File>
+				<File Id="223265351" Language="SFX">
+					<ShortName>Ninja_Footsteps\Ninja Footsteps7.wav</ShortName>
+					<Path>sfx\ninja_footsteps\ninja footsteps7_ddc98ef4.wem</Path>
+				</File>
+				<File Id="938786064" Language="SFX">
+					<ShortName>Ninja_kill\Ninja_Kill1.wav</ShortName>
+					<Path>sfx\ninja_kill\ninja_kill1_ddc98ef4.wem</Path>
+				</File>
+				<File Id="360023358" Language="SFX">
+					<ShortName>Ninja_kill\Ninja_Kill2.wav</ShortName>
+					<Path>sfx\ninja_kill\ninja_kill2_ddc98ef4.wem</Path>
+				</File>
+				<File Id="865713151" Language="SFX">
+					<ShortName>Ninja_kill\Ninja_Kill3.wav</ShortName>
+					<Path>sfx\ninja_kill\ninja_kill3_ddc98ef4.wem</Path>
+				</File>
+				<File Id="347737356" Language="SFX">
+					<ShortName>Ninja_Land_Ground_Silent\Ninja_Land_Ground_Silent1.wav</ShortName>
+					<Path>sfx\ninja_land_ground_silent\ninja_land_ground_silent1_ddc98ef4.wem</Path>
+				</File>
+				<File Id="889829253" Language="SFX">
+					<ShortName>Ninja_Land_Ground_Silent\Ninja_Land_Ground_Silent2.wav</ShortName>
+					<Path>sfx\ninja_land_ground_silent\ninja_land_ground_silent2_ddc98ef4.wem</Path>
+				</File>
+				<File Id="188686601" Language="SFX">
+					<ShortName>Ninja_Land_Ground_Silent\Ninja_Land_Ground_Silent3.wav</ShortName>
+					<Path>sfx\ninja_land_ground_silent\ninja_land_ground_silent3_ddc98ef4.wem</Path>
+				</File>
+				<File Id="562222079" Language="SFX">
+					<ShortName>Ninja_Roll\Ninja_Roll1.wav</ShortName>
+					<Path>sfx\ninja_roll\ninja_roll1_ddc98ef4.wem</Path>
+				</File>
+				<File Id="373483429" Language="SFX">
+					<ShortName>Ninja_Roll\Ninja_Roll2.wav</ShortName>
+					<Path>sfx\ninja_roll\ninja_roll2_ddc98ef4.wem</Path>
+				</File>
+				<File Id="477774916" Language="SFX">
+					<ShortName>Ninja_Roll\Ninja_Roll3.wav</ShortName>
+					<Path>sfx\ninja_roll\ninja_roll3_ddc98ef4.wem</Path>
+				</File>
+				<File Id="227490867" Language="SFX">
+					<ShortName>Ninja_Teleport_Disappear.wav</ShortName>
+					<Path>sfx\ninja_teleport_disappear_ddc98ef4.wem</Path>
+				</File>
+				<File Id="332839705" Language="SFX">
+					<ShortName>Ninja_Teleport_Reappear.wav</ShortName>
+					<Path>sfx\ninja_teleport_reappear_ddc98ef4.wem</Path>
+				</File>
+				<File Id="412219912" Language="SFX">
+					<ShortName>Release\Shuriken_Release1.wav</ShortName>
+					<Path>sfx\release\shuriken_release1_ddc98ef4.wem</Path>
+				</File>
+				<File Id="420290937" Language="SFX">
+					<ShortName>Release\Shuriken_Release2.wav</ShortName>
+					<Path>sfx\release\shuriken_release2_ddc98ef4.wem</Path>
+				</File>
+				<File Id="949790015" Language="SFX">
+					<ShortName>Release\Shuriken_Release3.wav</ShortName>
+					<Path>sfx\release\shuriken_release3_ddc98ef4.wem</Path>
+				</File>
+				<File Id="1044176461" Language="SFX">
+					<ShortName>Release\Shuriken_Release4.wav</ShortName>
+					<Path>sfx\release\shuriken_release4_ddc98ef4.wem</Path>
+				</File>
+				<File Id="799757434" Language="SFX">
+					<ShortName>Robot_Death\Robot_Death1.wav</ShortName>
+					<Path>sfx\robot_death\robot_death1_ddc98ef4.wem</Path>
+				</File>
+				<File Id="486991494" Language="SFX">
+					<ShortName>Robot_Death\Robot_Death2.wav</ShortName>
+					<Path>sfx\robot_death\robot_death2_ddc98ef4.wem</Path>
+				</File>
+				<File Id="446813936" Language="SFX">
+					<ShortName>Robot_Death\Robot_Death3.wav</ShortName>
+					<Path>sfx\robot_death\robot_death3_ddc98ef4.wem</Path>
+				</File>
+				<File Id="665332571" Language="SFX">
+					<ShortName>Robot_Death\Robot_Death4.wav</ShortName>
+					<Path>sfx\robot_death\robot_death4_ddc98ef4.wem</Path>
+				</File>
+				<File Id="410956077" Language="SFX">
+					<ShortName>Robot_Laser\Robot_Laser1.wav</ShortName>
+					<Path>sfx\robot_laser\robot_laser1_ddc98ef4.wem</Path>
+				</File>
+				<File Id="1014251911" Language="SFX">
+					<ShortName>Robot_Laser\Robot_Laser2.wav</ShortName>
+					<Path>sfx\robot_laser\robot_laser2_ddc98ef4.wem</Path>
+				</File>
+				<File Id="564749346" Language="SFX">
+					<ShortName>Robot_Laser\Robot_Laser3.wav</ShortName>
+					<Path>sfx\robot_laser\robot_laser3_ddc98ef4.wem</Path>
+				</File>
+				<File Id="314039723" Language="SFX">
+					<ShortName>Robot_Laser\Robot_Laser4.wav</ShortName>
+					<Path>sfx\robot_laser\robot_laser4_ddc98ef4.wem</Path>
+				</File>
+				<File Id="115570735" Language="SFX">
+					<ShortName>Robot_Walk\Robot_Walk1.wav</ShortName>
+					<Path>sfx\robot_walk\robot_walk1_ddc98ef4.wem</Path>
+				</File>
+				<File Id="306223715" Language="SFX">
+					<ShortName>Robot_Walk\Robot_Walk2.wav</ShortName>
+					<Path>sfx\robot_walk\robot_walk2_ddc98ef4.wem</Path>
+				</File>
+				<File Id="883962186" Language="SFX">
+					<ShortName>Robot_Walk\Robot_Walk3.wav</ShortName>
+					<Path>sfx\robot_walk\robot_walk3_ddc98ef4.wem</Path>
+				</File>
+				<File Id="12362363" Language="SFX">
+					<ShortName>Robot_Walk\Robot_Walk4.wav</ShortName>
+					<Path>sfx\robot_walk\robot_walk4_ddc98ef4.wem</Path>
+				</File>
+				<File Id="531852897" Language="SFX">
+					<ShortName>Shuriken Music 001.wav</ShortName>
+					<Path>sfx\shuriken music 001_ddc98ef4.wem</Path>
+				</File>
+				<File Id="81853134" Language="SFX">
+					<ShortName>Shuriken_Loop.wav</ShortName>
+					<Path>sfx\shuriken_loop_ada7cf21.wem</Path>
+				</File>
+			</IncludedFullFiles>
+			<IncludedPrefetchFiles />
+			<ExternalSources />
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

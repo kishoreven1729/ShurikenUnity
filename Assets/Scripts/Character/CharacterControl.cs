@@ -162,6 +162,8 @@ public class CharacterControl : MonoBehaviour
                             if (Input.GetButtonDown("Fire2"))
                             {
                                 print("Fire2");
+								AudioManager.audioInstance.PlaySound("Teleport");
+
                                 CharacterFollow.characterFollowInstance.ChangeTargetToCharacter();
                                 //transform.position = new Vector3(_thrownShuriken.position.x, _thrownShuriken.position.y, transform.position.z);
                                 _shurikenTargetPosition = new Vector3(_thrownShuriken.position.x, _thrownShuriken.position.y, transform.position.z);
@@ -297,6 +299,8 @@ public class CharacterControl : MonoBehaviour
 
     private void CharacterRun()
     {
+		AudioManager.audioInstance.PlaySound("Run");
+
         Vector3 velocity = movementDirection * movementSpeed;
 
         ResetParameters();
@@ -322,6 +326,8 @@ public class CharacterControl : MonoBehaviour
 
     private void CharacterDash()
     {
+		AudioManager.audioInstance.PlaySound("Dash");
+
         Vector3 velocity = movementDirection * movementSpeed * dashFactor;
 
         ResetParameters();
@@ -413,6 +419,8 @@ public class CharacterControl : MonoBehaviour
     {
         if (GameManager.Instance._shurikenLaunched == false)
         {
+			AudioManager.audioInstance.PlaySound("ShurikenRelease");
+
             GameManager.Instance._shurikenLaunched = true;
 
             Vector2 character2DPosition = new Vector2(transform.position.x, transform.position.y);

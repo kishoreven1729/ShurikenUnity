@@ -1,0 +1,105 @@
+Event	ID	Name			Wwise Object Path	Notes
+	16142425	Play_Shuriken_Release			\Shuriken\Play_Shuriken_Release	
+	115136214	Stop_Shuriken_Loop			\Shuriken\Stop_Shuriken_Loop	
+	310081491	Stop_Shuriken_Collision_Wall			\Shuriken\Stop_Shuriken_Collision_Wall	
+	387947175	Play_Shuriken_Collision_Robot			\Shuriken\Play_Shuriken_Collision_Robot	
+	733338729	Play_Shuriken_Collision_Wall			\Shuriken\Play_Shuriken_Collision_Wall	
+	860357291	Stop_Ninja_Death			\Shuriken\Stop_Ninja_Death	
+	906521951	Play_Garbage_Compressor_DownMovement			\Shuriken\Play_Garbage_Compressor_DownMovement	
+	927590349	Play_Ninja_kill			\Shuriken\Play_Ninja_kill	
+	991305627	Play_Background_loop			\Shuriken\Play_Background_loop	
+	1093930843	Stop_Ninja_Dash			\Shuriken\Stop_Ninja_Dash	
+	1145831847	Stop_Robot_Death			\Shuriken\Stop_Robot_Death	
+	1158114989	Stop_Background_loop			\Shuriken\Stop_Background_loop	
+	1317693067	Stop_Shuriken_Release			\Shuriken\Stop_Shuriken_Release	
+	1335336558	Play_Robot_Laser			\Shuriken\Play_Robot_Laser	
+	1389842473	Play_Ninja_Dash			\Shuriken\Play_Ninja_Dash	
+	1455659358	Stop_Ninja_Land_Ground_Silent			\Shuriken\Stop_Ninja_Land_Ground_Silent	
+	1503400553	Stop_Shuriken_Collision_Robot			\Shuriken\Stop_Shuriken_Collision_Robot	
+	1680145865	Play_Ninja_Death			\Shuriken\Play_Ninja_Death	
+	1777239403	Play_Ninja_Teleport_Reappear			\Shuriken\Play_Ninja_Teleport_Reappear	
+	2085749092	Play_Ninja_Land_Ground_Silent			\Shuriken\Play_Ninja_Land_Ground_Silent	
+	2343109494	Stop_Garbage_Compressor_UpMovement			\Shuriken\Stop_Garbage_Compressor_UpMovement	
+	2378469599	Stop_Ninja_kill			\Shuriken\Stop_Ninja_kill	
+	2426976433	Play_Robot_Death			\Shuriken\Play_Robot_Death	
+	2546651310	Play_Ninja_Footsteps			\Shuriken\Play_Ninja_Footsteps	
+	2891690867	Play_Shuriken_Music_001			\Default Work Unit\Play_Shuriken_Music_001	
+	3044962766	Stop_Ninja_Roll			\Shuriken\Stop_Ninja_Roll	
+	3237887829	Stop_Garbage_Compressor_DownMovement			\Shuriken\Stop_Garbage_Compressor_DownMovement	
+	3262222180	Stop_Ninja_Footsteps			\Shuriken\Stop_Ninja_Footsteps	
+	3262236172	Stop_Robot_Laser			\Shuriken\Stop_Robot_Laser	
+	3471277484	Play_Garbage_Compressor_UpMovement			\Shuriken\Play_Garbage_Compressor_UpMovement	
+	3505612506	Stop_Ninja_Dash_Kill			\Shuriken\Stop_Ninja_Dash_Kill	
+	3800083062	Play_Ninja_Teleport_Disappear			\Shuriken\Play_Ninja_Teleport_Disappear	
+	3834340392	Play_Ninja_Roll			\Shuriken\Play_Ninja_Roll	
+	3902765985	Stop_Ninja_Teleport_Reappear			\Shuriken\Stop_Ninja_Teleport_Reappear	
+	3920229824	Stop_Ninja_Teleport_Disappear			\Shuriken\Stop_Ninja_Teleport_Disappear	
+	4156105688	Stop_Robot_Walk			\Shuriken\Stop_Robot_Walk	
+	4175555896	Play_Shuriken_Loop			\Shuriken\Play_Shuriken_Loop	
+	4233470777	Stop_Shuriken_Music_001			\Default Work Unit\Stop_Shuriken_Music_001	
+	4233708478	Play_Robot_Walk			\Shuriken\Play_Robot_Walk	
+	4262683012	Play_Ninja_Dash_Kill			\Shuriken\Play_Ninja_Dash_Kill	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	204848514	star_volume			\Shuriken\star_volume	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	12362363	Robot_Walk4	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\robot_walk\robot_walk4_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Robot_Walk\Robot_Walk4		137798
+	71458312	Ninja Footsteps2	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_footsteps\ninja footsteps2_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Footsteps\Ninja Footsteps2		14476
+	81853134	Shuriken_Loop	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\shuriken_loop_ada7cf21.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Shuriken_Loop		14946
+	82851937	Ninja Footsteps3	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_footsteps\ninja footsteps3_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Footsteps\Ninja Footsteps3		6370
+	103287221	Shuriken_Collision_Wall3	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\collision_wall\shuriken_collision_wall3_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Shuriken_Collision_Wall\Shuriken_Collision_Wall3		84964
+	115570735	Robot_Walk1	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\robot_walk\robot_walk1_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Robot_Walk\Robot_Walk1		100572
+	140538899	Ninja Footsteps4	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_footsteps\ninja footsteps4_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Footsteps\Ninja Footsteps4		11678
+	158802302	Ninja Footsteps6	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_footsteps\ninja footsteps6_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Land_Ground_Silent\Ninja_Footsteps\Ninja Footsteps6		10772
+	188686601	Ninja_Land_Ground_Silent3	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_land_ground_silent\ninja_land_ground_silent3_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Land_Ground_Silent\Ninja_Land_Ground_Silent3		42240
+	200925885	Garbage_Compressor_UpMovement	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\garbage_compressor_upmovement_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Garbage_Compressor_UpMovement		55248
+	223265351	Ninja Footsteps7	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_footsteps\ninja footsteps7_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Footsteps\Ninja Footsteps7		7096
+	227490867	Ninja_Teleport_Disappear	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_teleport_disappear_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Teleport_Disappear		68590
+	306223715	Robot_Walk2	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\robot_walk\robot_walk2_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Robot_Walk\Robot_Walk2		111706
+	314039723	Robot_Laser4	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\robot_laser\robot_laser4_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Robot_Laser\Robot_Laser4		67796
+	317991637	Background_loop	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\background_loop_c9b8a6b2.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Background_loop		7063120
+	332839705	Ninja_Teleport_Reappear	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_teleport_reappear_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Teleport_Reappear		67622
+	347737356	Ninja_Land_Ground_Silent1	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_land_ground_silent\ninja_land_ground_silent1_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Land_Ground_Silent\Ninja_Land_Ground_Silent1		52102
+	360023358	Ninja_Kill2	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_kill\ninja_kill2_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_kill\Ninja_Kill2		92534
+	373483429	Ninja_Roll2	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_roll\ninja_roll2_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Roll\Ninja_Roll2		26696
+	406902668	Shuriken_Collision_Wall4	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\collision_wall\shuriken_collision_wall4_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Shuriken_Collision_Wall\Shuriken_Collision_Wall4		101274
+	410956077	Robot_Laser1	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\robot_laser\robot_laser1_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Robot_Laser\Robot_Laser1		70060
+	412219912	Shuriken_Release1	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\release\shuriken_release1_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Shuriken_Release\Shuriken_Release1		38858
+	420290937	Shuriken_Release2	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\release\shuriken_release2_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Shuriken_Release\Shuriken_Release2		29038
+	438142331	Ninja_Dash4	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_dash\ninja_dash4_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Dash\Ninja_Dash4		25432
+	446813936	Robot_Death3	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\robot_death\robot_death3_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Robot_Death\Robot_Death3		140140
+	454158269	Ninja_Death2	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_death\ninja_death2_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Death\Ninja_Death2		84762
+	457582990	Shuriken_Collision_Robot3	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\collision_wall_robot\shuriken_collision_robot3_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Shuriken_Collision_Robot\Shuriken_Collision_Robot3		61118
+	477774916	Ninja_Roll3	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_roll\ninja_roll3_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Roll\Ninja_Roll3		38458
+	486454064	Ninja Footsteps5	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_footsteps\ninja footsteps5_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Footsteps\Ninja Footsteps5		10662
+	486991494	Robot_Death2	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\robot_death\robot_death2_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Robot_Death\Robot_Death2		166392
+	501752990	Shuriken_Collision_Robot1	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\collision_wall_robot\shuriken_collision_robot1_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Shuriken_Collision_Robot\Shuriken_Collision_Robot1		81872
+	531852897	Shuriken Music 001	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\shuriken music 001_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Shuriken Music 001		25401664
+	562222079	Ninja_Roll1	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_roll\ninja_roll1_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Roll\Ninja_Roll1		22998
+	564749346	Robot_Laser3	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\robot_laser\robot_laser3_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Robot_Laser\Robot_Laser3		71902
+	620115578	Ninja_Death1	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_death\ninja_death1_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Death\Ninja_Death1		90772
+	665332571	Robot_Death4	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\robot_death\robot_death4_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Robot_Death\Robot_Death4		129130
+	678150808	Ninja_Dash2	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_dash\ninja_dash2_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Dash\Ninja_Dash2		32368
+	728575607	Ninja_Dash_Kill2	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_dash_kill\ninja_dash_kill2_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Dash_Kill\Ninja_Dash_Kill2		233060
+	784569363	Garbage_Compressor_DownMovement	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\garbage_compressor_downmovement_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Garbage_Compressor_DownMovement		120704
+	799757434	Robot_Death1	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\robot_death\robot_death1_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Robot_Death\Robot_Death1		177890
+	813798879	Ninja_Death3	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_death\ninja_death3_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Death\Ninja_Death3		101700
+	858073874	Shuriken_Collision_Wall2	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\collision_wall\shuriken_collision_wall2_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Shuriken_Collision_Wall\Shuriken_Collision_Wall2		96946
+	865713151	Ninja_Kill3	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_kill\ninja_kill3_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_kill\Ninja_Kill3		93648
+	872159814	Ninja_Dash_Kill1	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_dash_kill\ninja_dash_kill1_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Dash_Kill\Ninja_Dash_Kill1		210798
+	879962964	Ninja_Death4	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_death\ninja_death4_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Death\Ninja_Death4		96104
+	883962186	Robot_Walk3	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\robot_walk\robot_walk3_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Robot_Walk\Robot_Walk3		128486
+	884524721	Shuriken_Collision_Robot2	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\collision_wall_robot\shuriken_collision_robot2_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Shuriken_Collision_Robot\Shuriken_Collision_Robot2		97908
+	889829253	Ninja_Land_Ground_Silent2	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_land_ground_silent\ninja_land_ground_silent2_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Land_Ground_Silent\Ninja_Land_Ground_Silent2		54468
+	925180120	Ninja Footsteps1	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_footsteps\ninja footsteps1_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Footsteps\Ninja Footsteps1		11846
+	938786064	Ninja_Kill1	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_kill\ninja_kill1_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_kill\Ninja_Kill1		69052
+	949790015	Shuriken_Release3	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\release\shuriken_release3_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Shuriken_Release\Shuriken_Release3		43588
+	951393266	Ninja_Dash_Kill3	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_dash_kill\ninja_dash_kill3_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Dash_Kill\Ninja_Dash_Kill3		210268
+	955254996	Shuriken_Collision_Wall1	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\collision_wall\shuriken_collision_wall1_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Shuriken_Collision_Wall\Shuriken_Collision_Wall1		95226
+	964917720	Shuriken_Collision_Robot4	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\collision_wall_robot\shuriken_collision_robot4_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Shuriken_Collision_Robot\Shuriken_Collision_Robot4		65658
+	975826179	Ninja_Dash3	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_dash\ninja_dash3_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Dash\Ninja_Dash3		24778
+	1014251911	Robot_Laser2	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\robot_laser\robot_laser2_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Robot_Laser\Robot_Laser2		76432
+	1020691880	Ninja_Dash1	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\ninja_dash\ninja_dash1_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Ninja_Dash\Ninja_Dash1		28516
+	1044176461	Shuriken_Release4	C:\Users\edward_bauman\Documents\WwiseProjects\Shuriken_game\.cache\Windows\sfx\release\shuriken_release4_ddc98ef4.wem		\Actor-Mixer Hierarchy\Shuriken\Shuriken_Game\Shuriken_Release\Shuriken_Release4		47800
+
