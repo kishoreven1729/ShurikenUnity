@@ -13,7 +13,7 @@ public class ShurikenControl : MonoBehaviour
 
 	#region Public Variables
 	
-	public Vector2		_shurikenForce;
+	public float		shurikenForce;
     public float        _shurikenLifespan;
     public float        deflectForce = 10f;
     public float        angularVelocity = 300f;
@@ -75,7 +75,7 @@ public class ShurikenControl : MonoBehaviour
 
 	public void SetupShot(Vector2 direction)
 	{
-		Vector2 shurikenShootingForce = new Vector2(direction.x * _shurikenForce.x, direction.y * _shurikenForce.y);
+        Vector2 shurikenShootingForce = direction * shurikenForce;
 
 		rigidbody2D.AddForce(shurikenShootingForce);
 
