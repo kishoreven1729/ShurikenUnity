@@ -46,7 +46,7 @@ public class CharacterControl : MonoBehaviour
     #region Constructor
     void Start()
     {
-        _characterAnimator = GetComponent<Animator>();
+        _characterAnimator = transform.GetChild(0).GetComponent<Animator>();
 
 //      movementSpeed = 10.0f;
         movementDirection = Vector2.zero;
@@ -55,13 +55,13 @@ public class CharacterControl : MonoBehaviour
         CharacterIdle();
 
         /*Dash Parameters*/
-        dashFactor = 2.0f;
+//        dashFactor = 2.0f;
         _dashTime = 0.3f;
         _dashEndTime = 0.0f;
 
         /*Shuriken Parameters*/
         _isShurikenThrown = false;
-        _shurikenSpawnPoint = transform.Find("ShurikenSpawnPoint");
+        _shurikenSpawnPoint = transform.GetChild(1);
 		_shurikenTargetPosition = Vector3.zero;
 
         /*Character Parameters*/
@@ -113,7 +113,7 @@ public class CharacterControl : MonoBehaviour
                 {
 					_characterControlEnabled = false;
 
-					currentCharacterState = CharacterState.Shoot;
+                    currentCharacterState = CharacterState.Shoot;
                 }
             }
 
@@ -152,6 +152,8 @@ public class CharacterControl : MonoBehaviour
 					{
 						if (Input.GetButtonDown("Fire2"))
 						{
+                                print("Fire2");
+
 							//transform.position = new Vector3(_thrownShuriken.position.x, _thrownShuriken.position.y, transform.position.z);
 							_shurikenTargetPosition = new Vector3(_thrownShuriken.position.x, _thrownShuriken.position.y, transform.position.z);
 							
@@ -358,9 +360,11 @@ public class CharacterControl : MonoBehaviour
 
 	public IEnumerator TeleportCharacter()
 	{
+        print("TeleportCharacter");
+
 		ResetParameters();
 
-		float animationLength = 0.0f;
+		/*float animationLength = 0.0f;
 
 		_characterAnimator.SetBool("TeleportDisappear", true);
 
@@ -368,25 +372,25 @@ public class CharacterControl : MonoBehaviour
 
 		yield return new WaitForSeconds(animationLength);
 
-		ResetParameters();
+		ResetParameters();*/
 
 		transform.position = _shurikenTargetPosition;
 
-		_characterAnimator.SetBool("TeleportReappear", true);
+		/*_characterAnimator.SetBool("TeleportReappear", true);
 
 		animationLength = _characterAnimator.GetCurrentAnimatorStateInfo(0).length;
 		
 		yield return new WaitForSeconds(animationLength);
 
-		CharacterInAir();
+		CharacterInAir();*/
 
 		_characterControlEnabled = true;
+
+        yield return null;
 	}
 
     public IEnumerator CharacterShoot()
     {
-        _isShurikenThrown = true;
-
         Vector2 character2DPosition = new Vector2(transform.position.x, transform.position.y);
 
         Vector3 mousePosition3D = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -418,6 +422,12 @@ public class CharacterControl : MonoBehaviour
         _thrownShuriken.SendMessage("SetupShot", shurikenDirection, SendMessageOptions.DontRequireReceiver);
 
 		CharacterFollow.characterFollowInstance.ChangeTargetToShuriken();
+
+        currentCharacterState = CharacterState.Shoot;
+
+        _isShurikenThrown = true;
+
+        print("" + currentCharacterState);
     }
 
     private void ResetParameters()
