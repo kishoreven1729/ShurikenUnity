@@ -12,6 +12,9 @@ public class CharacterControl : MonoBehaviour
         Idle,
         Run,
         Dash,
+		DashKill,
+		Teleport,
+		TeleportKill,
         Dead
     }
     #endregion
@@ -26,6 +29,7 @@ public class CharacterControl : MonoBehaviour
     private Transform       _shurikenSpawnPoint;
     private int             _maxCharacterHealth;
     private bool            _onGround = false;
+	private Vector3			_shurikenTargetPosition;			
     #endregion
 
     #region Public Variables
@@ -34,7 +38,7 @@ public class CharacterControl : MonoBehaviour
     public Vector2          movementDirection;
     public CharacterState   currentCharacterState;
     public Transform        shurikenPrefab;
-    public int             characterHealth;
+    public int             	characterHealth;
     public float            damageForce = 100f;
     #endregion
 
@@ -57,6 +61,7 @@ public class CharacterControl : MonoBehaviour
         /*Shuriken Parameters*/
         _isShurikenThrown = false;
         _shurikenSpawnPoint = transform.Find("ShurikenSpawnPoint");
+		_shurikenTargetPosition = Vector3.zero;
 
         /*Character Parameters*/
         _maxCharacterHealth = 3;
@@ -77,12 +82,17 @@ public class CharacterControl : MonoBehaviour
                 {
                     if (Input.GetButtonDown("Fire2"))
                     {
-                        transform.position = new Vector3(_thrownShuriken.position.x, _thrownShuriken.position.y, transform.position.z);
+                        //transform.position = new Vector3(_thrownShuriken.position.x, _thrownShuriken.position.y, transform.position.z);
+						_shurikenTargetPosition = new Vector3(_thrownShuriken.position.x, _thrownShuriken.position.y, transform.position.z);
 
-                        if (currentCharacterState != CharacterState.Dash)
+                        /*if (currentCharacterState != CharacterState.Dash)
                         {
                             CharacterIdle();
-                        }
+                        }*/
+
+						currentCharacterState = CharacterState.Teleport;
+
+						_characterControlEnabled = false;
 
                         _isShurikenThrown = false;
 
@@ -136,55 +146,72 @@ public class CharacterControl : MonoBehaviour
             }
 
             UpdateCharacterState();
-        } else
+        } 
+		else
         {
             switch (currentCharacterState)
             {
-                case CharacterState.Dash:
-                    if (Time.time > _dashEndTime)
-                    {
-                        _characterControlEnabled = true;
-                    }
-                    break;
-                case CharacterState.Dead:
-                    print("I m dead!");
-                    break;
+            case CharacterState.Dash:
+				if (Time.time > _dashEndTime)
+                {
+                    _characterControlEnabled = true;
+                }
+                break;
+			case CharacterState.DashKill:
+				_isShurikenThrown = false;
+
+				StartCoroutine("EnemyKill");
+				break;
+			case CharacterState.Teleport:
+				StartCoroutine("TeleportCharacter");
+				break;
+			case CharacterState.TeleportKill:
+				_isShurikenThrown = false;
+
+				StartCoroutine("EnemyKill");
+				break;
+            case CharacterState.Dead:
+                print("I m dead!");
+                break;
             }
         }
     }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-
-        print(coll.transform.tag);
-        if (coll.gameObject.tag == "Enemy")
+		if (coll.gameObject.tag == "Enemy")
         {
-//            print("HitTheEnemy!!");
-//            coll.gameObject.SendMessage("OnDamage");
-            rigidbody2D.AddForce(coll.contacts [0].normal * damageForce);
-            OnDamage(1);
+			switch(currentCharacterState)
+			{
+			case CharacterState.Dash:
+				_characterControlEnabled = false;
+				currentCharacterState = CharacterState.DashKill;
+				break;
+			case CharacterState.Run:
+				rigidbody2D.AddForce(coll.contacts [0].normal * damageForce);
+				OnDamage(1);
+				break;
+			}
         }
 
         if (coll.gameObject.tag == "Ground")
         {
+			CharacterLanding();
             _onGround = true;
         }
         
     }
 
     void OnCollisionExit2D(Collision2D coll)
-    {
-        
-        print(coll.transform.tag);
+    {        
         if (coll.gameObject.tag == "Ground")
         {
-            print("LeaveGround!!");
-            _onGround = false;
+			if(currentCharacterState != CharacterState.Teleport)
+			{
+            	_onGround = false;
 
-            CharacterIdle();
-            //            coll.gameObject.SendMessage("OnDamage");
-//            rigidbody2D.AddForce(coll.contacts[0].normal * damageForce);
-//            OnDamage(1);
+				CharacterInAir();
+			}
         }
         
     }
@@ -196,8 +223,11 @@ public class CharacterControl : MonoBehaviour
 
         if (coll.tag == "EnemyDeathArea")
         {
-            print("HitTheEnemy!!");
-            coll.SendMessageUpwards("OnDamage");
+			_characterControlEnabled = false;
+
+			currentCharacterState = CharacterState.TeleportKill;
+         
+			coll.SendMessageUpwards("OnDamage");
         }
     }
 
@@ -269,6 +299,79 @@ public class CharacterControl : MonoBehaviour
         rigidbody2D.Sleep();
     }
 
+	private void CharacterInAir()
+	{
+		ResetParameters();
+		
+		_characterAnimator.SetBool("InAir", true);
+
+		Vector2 characterVelocity = rigidbody2D.velocity;
+		characterVelocity.x = 0.0f;
+
+		rigidbody2D.velocity = characterVelocity;
+	}
+
+	private void CharacterLanding()
+	{
+		ResetParameters();
+
+		_characterAnimator.SetBool("Landing", true);
+
+		rigidbody2D.Sleep();
+	}
+	
+	public IEnumerator EnemyKill()
+	{
+		ResetParameters();
+
+		float enemyKillAnimationLength = 0.0f;
+
+		switch(currentCharacterState)
+		{
+		case CharacterState.DashKill:
+			_characterAnimator.SetBool("DashKill", true);
+			enemyKillAnimationLength = _characterAnimator.GetCurrentAnimatorStateInfo(0).length;
+			break;
+		case CharacterState.TeleportKill:
+			_characterAnimator.SetBool("TeleportKill", true);
+			enemyKillAnimationLength = _characterAnimator.GetCurrentAnimatorStateInfo(0).length;
+			break;
+		}
+
+		yield return new WaitForSeconds(enemyKillAnimationLength);
+
+		CharacterIdle();
+
+		_characterControlEnabled = true;
+	}
+
+	public IEnumerator TeleportCharacter()
+	{
+		ResetParameters();
+
+		float animationLength = 0.0f;
+
+		_characterAnimator.SetBool("TeleportDisappear", true);
+
+		animationLength = _characterAnimator.GetCurrentAnimatorStateInfo(0).length;
+
+		yield return new WaitForSeconds(animationLength);
+
+		ResetParameters();
+
+		transform.position = _shurikenTargetPosition;
+
+		_characterAnimator.SetBool("TeleportReappear", true);
+
+		animationLength = _characterAnimator.GetCurrentAnimatorStateInfo(0).length;
+		
+		yield return new WaitForSeconds(animationLength);
+
+		CharacterInAir();
+
+		_characterControlEnabled = true;
+	}
+
     private void CharacterShoot()
     {
         _isShurikenThrown = true;
@@ -276,10 +379,6 @@ public class CharacterControl : MonoBehaviour
         Vector2 character2DPosition = new Vector2(transform.position.x, transform.position.y);
         Vector3 mousePosition3D = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
         Vector2 mousePosition2D = new Vector2(mousePosition3D.x, mousePosition3D.y);
-
-
-//      Debug.Log("Character2DPosition: " + character2DPosition);
-//      Debug.Log("MousePosition: " + mousePosition2D);
 
         Vector2 shurikenDirection = mousePosition2D - character2DPosition;
         shurikenDirection.Normalize();
@@ -304,6 +403,13 @@ public class CharacterControl : MonoBehaviour
         _characterAnimator.SetBool("Run", false);
         _characterAnimator.SetBool("Dash", false);
         _characterAnimator.SetBool("Dead", false);
+		_characterAnimator.SetBool("Shoot", false);
+		_characterAnimator.SetBool("DashKill", false);
+		_characterAnimator.SetBool("TeleportReappear", false);
+		_characterAnimator.SetBool("TeleportDisappear", false);
+		_characterAnimator.SetBool("TeleportKill", false);
+		_characterAnimator.SetBool("InAir", false);
+		_characterAnimator.SetBool("Landing", false);
     }
     #endregion
 
