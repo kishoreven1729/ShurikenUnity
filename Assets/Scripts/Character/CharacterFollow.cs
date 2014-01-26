@@ -10,7 +10,7 @@ public class CharacterFollow : MonoBehaviour
 	#endregion
 
 	#region Public Variables
-	public Transform	character;
+    public GameObject	target;
 	public float		smooth;
 	#endregion
 
@@ -19,14 +19,14 @@ public class CharacterFollow : MonoBehaviour
 	{
 		_defaultCharacterPosition = Vector2.zero;
 
-		character = GameObject.FindGameObjectWithTag("Player").transform;
+        target = GameObject.FindGameObjectWithTag("Player");
 	}
 	#endregion
 	
 	#region Loop
 	void Update() 
 	{
-		Vector3 cameraTargetPosition = character.position;
+        Vector3 cameraTargetPosition = target.transform.position;
 
 		Vector3 cameraPosition = transform.position;
 
@@ -39,5 +39,11 @@ public class CharacterFollow : MonoBehaviour
 	#endregion
 
 	#region Methods
+
+    public void SetTarget(GameObject g)
+    {
+        target = g;
+    }
+
 	#endregion
 }

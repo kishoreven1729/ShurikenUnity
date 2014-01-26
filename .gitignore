@@ -7,3 +7,4 @@ Temp
 *.sln
 *.suo
 *.userprefs
+Assets/Scripts/Character/CharacterControl.cs

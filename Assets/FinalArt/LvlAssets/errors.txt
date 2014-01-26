@@ -1,0 +1,5 @@
+[Sat Jan 25 2014 18:42:39 GMT-0800 (PST)]
+Masher01.png: ImageMagick error: convert: MustSpecifyImageSize `-' @ error/rgb.c/ReadRGBImage/144.
+convert: NoImagesDefined `png:-' @ error/convert.c/ConvertImageCommand/3106.
+
+
