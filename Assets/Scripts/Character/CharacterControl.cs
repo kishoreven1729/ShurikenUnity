@@ -30,7 +30,9 @@ public class CharacterControl : MonoBehaviour
     private Transform       _shurikenSpawnPoint;
     private int             _maxCharacterHealth;
     private bool            _onGround = false;
-	private Vector3			_shurikenTargetPosition;			
+	private Vector3			_shurikenTargetPosition;
+
+	private Transform		_groundCheck;
     #endregion
 
     #region Public Variables
@@ -67,6 +69,7 @@ public class CharacterControl : MonoBehaviour
         /*Character Parameters*/
         _maxCharacterHealth = 3;
         characterHealth = _maxCharacterHealth;
+		_groundCheck = transform.GetChild(2);
 
         _characterControlEnabled = true;
     }
