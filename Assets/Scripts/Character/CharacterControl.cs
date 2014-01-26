@@ -1,7 +1,6 @@
 ﻿#region References
 using UnityEngine;
 using System.Collections;
-
 #endregion
 
 public class CharacterControl : MonoBehaviour
@@ -30,7 +29,9 @@ public class CharacterControl : MonoBehaviour
     private Transform       _shurikenSpawnPoint;
     private int             _maxCharacterHealth;
     private bool            _onGround = false;
-	private Vector3			_shurikenTargetPosition;			
+	private Vector3			_shurikenTargetPosition;
+
+	private Transform		_groundCheck;
     #endregion
 
     #region Public Variables
@@ -41,6 +42,9 @@ public class CharacterControl : MonoBehaviour
     public Transform        shurikenPrefab;
     public int             	characterHealth;
     public float            damageForce = 100f;
+
+	public float			inAirThreshold;
+	public float			landingThreshold;
     #endregion
 
     #region Constructor
@@ -67,6 +71,7 @@ public class CharacterControl : MonoBehaviour
         /*Character Parameters*/
         _maxCharacterHealth = 3;
         characterHealth = _maxCharacterHealth;
+		_groundCheck = transform.GetChild(2);
 
         _characterControlEnabled = true;
     }
@@ -75,13 +80,15 @@ public class CharacterControl : MonoBehaviour
     #region Loop
     void Update()
     {
+		_onGround = CheckGround();
+
         if (_characterControlEnabled == true)
         {       
             movementDirection = Vector2.zero;
-            currentCharacterState = CharacterState.Idle;
-
-            if (_onGround == true)
+            //currentCharacterState = CharacterState.Idle;
+			if (_onGround == true)
             {
+				currentCharacterState = CharacterState.Idle;
 
                 if (Input.GetKey(KeyCode.D))
                 {
@@ -93,29 +100,32 @@ public class CharacterControl : MonoBehaviour
                     movementDirection.x = -1.0f;
                     currentCharacterState = CharacterState.Run;
                 }
+
+				if (Input.GetKeyDown(KeyCode.LeftShift))
+				{
+					if (movementDirection != Vector2.zero)
+					{
+						_characterControlEnabled = false;
+						
+						_dashEndTime = Time.time + _dashTime;
+						
+						currentCharacterState = CharacterState.Dash;
+					}
+				}
             }
 
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                if (movementDirection != Vector2.zero)
-                {
-                    _characterControlEnabled = false;
+			if(currentCharacterState != CharacterState.Dash)
+			{
+	            if (Input.GetButtonDown("Fire1"))
+	            {
+	                if (_thrownShuriken == null)
+	                {
+						_characterControlEnabled = false;
 
-                    _dashEndTime = Time.time + _dashTime;
-
-                    currentCharacterState = CharacterState.Dash;
-                }
-            }
-
-            if (Input.GetButtonDown("Fire1"))
-            {
-                if (_thrownShuriken == null)
-                {
-					_characterControlEnabled = false;
-
-                    currentCharacterState = CharacterState.Shoot;
-                }
-            }
+	                    currentCharacterState = CharacterState.Shoot;
+	                }
+	            }
+			}
 
             UpdateCharacterState();
         } 
@@ -203,18 +213,11 @@ public class CharacterControl : MonoBehaviour
 				break;
 			}
         }
-
-        if (coll.gameObject.tag == "Ground")
-        {
-			CharacterLanding();
-            _onGround = true;
-        }
-        
     }
 
     void OnCollisionExit2D(Collision2D coll)
     {        
-        if (coll.gameObject.tag == "Ground")
+        /*if (coll.gameObject.tag == "Ground")
         {
 			if(currentCharacterState != CharacterState.Teleport)
 			{
@@ -222,8 +225,7 @@ public class CharacterControl : MonoBehaviour
 
 				CharacterInAir();
 			}
-        }
-        
+        }*/
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -244,6 +246,47 @@ public class CharacterControl : MonoBehaviour
     #endregion
 
     #region Methods
+	public bool CheckGround()
+	{
+		Vector3 groundDirection = _groundCheck.position - transform.position;
+
+		RaycastHit2D groundHit = Physics2D.Raycast(transform.position, groundDirection, 1000.0f, 1 << LayerMask.NameToLayer("Ground"));
+
+		if(groundHit != null)
+		{
+			Debug.Log(groundHit.transform.tag);
+
+			if(groundHit.transform.tag == "Ground")
+			{
+				float distance = Vector2.Distance(groundHit.point, new Vector2(transform.position.x, transform.position.y));
+
+				Debug.Log("distance");
+
+				if(currentCharacterState != CharacterState.TeleportKill)
+				{
+					if(distance > inAirThreshold)
+					{
+						CharacterInAir();
+
+						return false;
+					}
+					else if(distance > landingThreshold)
+					{
+						CharacterLanding();
+
+						return false;
+					}
+					else 
+					{
+						return true;
+					}
+				}
+			}
+		}
+
+		return false;
+	}
+
     public void UpdateCharacterState()
     {
         switch (currentCharacterState)
@@ -360,11 +403,11 @@ public class CharacterControl : MonoBehaviour
 
 	public IEnumerator TeleportCharacter()
 	{
-        print("TeleportCharacter");
+        //print("TeleportCharacter");
 
 		ResetParameters();
 
-		/*float animationLength = 0.0f;
+		float animationLength = 0.0f;
 
 		_characterAnimator.SetBool("TeleportDisappear", true);
 
@@ -372,17 +415,15 @@ public class CharacterControl : MonoBehaviour
 
 		yield return new WaitForSeconds(animationLength);
 
-		ResetParameters();*/
+		ResetParameters();
 
 		transform.position = _shurikenTargetPosition;
 
-		/*_characterAnimator.SetBool("TeleportReappear", true);
+		_characterAnimator.SetBool("TeleportReappear", true);
 
 		animationLength = _characterAnimator.GetCurrentAnimatorStateInfo(0).length;
 		
 		yield return new WaitForSeconds(animationLength);
-
-		CharacterInAir();*/
 
 		_characterControlEnabled = true;
 
