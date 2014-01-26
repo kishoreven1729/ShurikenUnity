@@ -9,7 +9,8 @@ public class EnemyAI : MonoBehaviour
         Idle,
         Patrol,
         Attack,
-        Die
+        Die,
+        None
     }
 
     public EnemyState state;
@@ -39,12 +40,16 @@ public class EnemyAI : MonoBehaviour
     public Vector2 checkRect;
     public GameObject weaponPrefab;
 
+    private Animator animator;
+
 
     // Use this for initialization
     void Start()
     {
 //      print("Start");
         player = GameObject.FindGameObjectWithTag("Player");
+
+        animator = GetComponentInChildren<Animator>();
 
         initPosition = transform.position;
 
@@ -73,6 +78,8 @@ public class EnemyAI : MonoBehaviour
                     break;
                 case EnemyState.Die:
                     Die();
+                    break;
+                case EnemyState.None:
                     break;
             }
 
@@ -164,7 +171,10 @@ public class EnemyAI : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject, 3f);
+        print("Die()");
+        animator.SetBool("die", true);
+        state = EnemyState.None;
+//        Destroy(gameObject, 3f);
     }
 
     bool OutOfBound()
@@ -187,10 +197,15 @@ public class EnemyAI : MonoBehaviour
 
     void OnDamage()
     {
+        if (state == EnemyState.Die)
+            return;
+        print("OnDamage()");
         state = EnemyState.Die;
+
         rigidbody2D.isKinematic = true;
-//        rigidbody2D.Sleep();
 
         GetComponent<BoxCollider2D>().enabled = false;
     }
+
+
 }

@@ -15,6 +15,8 @@ public class ShurikenControl : MonoBehaviour
 	
 	public Vector2		_shurikenForce;
     public float        _shurikenLifespan;
+    public float        deflectForce = 10f;
+    public float        angularVelocity = 300f;
 	#endregion
 
 	#region Constructor
@@ -35,6 +37,8 @@ public class ShurikenControl : MonoBehaviour
 	#region Loop
 	void Update() 
 	{
+        rigidbody2D.angularVelocity = angularVelocity;
+
 		if(_shurikenDisappearanceTime > 0.0f)
 		{
 			if(Time.time > _shurikenDisappearanceTime)
@@ -46,12 +50,20 @@ public class ShurikenControl : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
-		if(collision.collider.CompareTag("Ground"))
-		{
-			rigidbody2D.Sleep();
+//		if(collision.collider.CompareTag("Ground"))
+//		{
+//			rigidbody2D.Sleep();
+//
+//			DestoryShuriken();
+//		}
 
-			DestoryShuriken();
-		}
+        if(collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Ground"))
+        {
+            Vector2 n = collision.contacts[0].normal;
+            rigidbody2D.velocity = n * deflectForce;
+            Debug.DrawRay(collision.transform.position, n * deflectForce);
+            Destroy(gameObject, .5f);
+        }
 	}                      
 	#endregion
 
