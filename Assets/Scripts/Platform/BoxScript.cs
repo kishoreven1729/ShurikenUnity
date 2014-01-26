@@ -17,6 +17,7 @@ public class BoxScript : MonoBehaviour {
         
         if (other.gameObject.tag == "Player")
         {
+            print("win!");
             GameManager.Instance.Win();
         }
     }

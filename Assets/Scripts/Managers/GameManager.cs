@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     public Dictionary<int, GameObject> checkPoints = new Dictionary<int, GameObject>();
     public int currentCheckPoint = 0;
     public bool isWin = false;
-
+    public Transform victory;
     public bool            _shurikenLaunched = false;
 
     public Dictionary<int, GameObject> CheckPoints
@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour {
         {
             print("win!");
             isWin = true;
+            CharacterFollow.characterFollowInstance.target = victory;
         }
     }
 }

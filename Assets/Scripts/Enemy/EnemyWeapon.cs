@@ -5,7 +5,7 @@ public class EnemyWeapon : MonoBehaviour {
 
     public float lifeSpan = 3f;
 
-    public float rotateSpeed = 2f;
+//    public float rotateSpeed = 2f;
 
     public float speed = 1f;
 
@@ -24,7 +24,7 @@ public class EnemyWeapon : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        sprite.RotateAround(Vector3.forward, rotateSpeed * Time.deltaTime);
+//        sprite.RotateAround(Vector3.forward, rotateSpeed * Time.deltaTime);
 	
 	}
 
