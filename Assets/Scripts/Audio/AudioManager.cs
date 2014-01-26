@@ -64,6 +64,8 @@ public class AudioManager : MonoBehaviour
 		_backgroundSoundtrackPlayingID = 0;*/
 
 		LoadSoundDictionary();
+
+        PlayBackgroundSound();
 	}
 	#endregion
 
@@ -90,6 +92,7 @@ public class AudioManager : MonoBehaviour
 		if(AkSoundEngine.IsInitialized())
 		{
 			_backgroundSoundPlayingID = AkSoundEngine.PostEvent(_backgroundSoundID, gameObject, (uint) AkCallbackType.AK_EnableGetMusicPlayPosition);
+            print("playing Sound");
 
 			PlaySoundTrack();
 		}
