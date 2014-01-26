@@ -12,6 +12,7 @@ public class CharacterControl : MonoBehaviour
         Idle,
         Run,
         Dash,
+		Shoot,
 		DashKill,
 		Teleport,
 		TeleportKill,
@@ -74,37 +75,6 @@ public class CharacterControl : MonoBehaviour
     #region Loop
     void Update()
     {
-        if (currentCharacterState != CharacterState.Dead)
-        {
-            if (_isShurikenThrown == true)
-            {
-                if (_thrownShuriken != null)
-                {
-                    if (Input.GetButtonDown("Fire2"))
-                    {
-                        //transform.position = new Vector3(_thrownShuriken.position.x, _thrownShuriken.position.y, transform.position.z);
-						_shurikenTargetPosition = new Vector3(_thrownShuriken.position.x, _thrownShuriken.position.y, transform.position.z);
-
-                        /*if (currentCharacterState != CharacterState.Dash)
-                        {
-                            CharacterIdle();
-                        }*/
-
-						currentCharacterState = CharacterState.Teleport;
-
-						_characterControlEnabled = false;
-
-                        _isShurikenThrown = false;
-
-                        _thrownShuriken.SendMessage("DestoryShuriken", SendMessageOptions.DontRequireReceiver);
-                    }
-                } else
-                {
-                    _isShurikenThrown = false;
-                }
-            }
-        }
-
         if (_characterControlEnabled == true)
         {       
             movementDirection = Vector2.zero;
@@ -141,7 +111,13 @@ public class CharacterControl : MonoBehaviour
             {
                 if (_thrownShuriken == null)
                 {
+					_characterControlEnabled = false;
+
+					currentCharacterState = CharacterState.Shoot;
+
                     CharacterShoot();
+
+					CharacterFollow.characterFollowInstance.ChangeTargetToShuriken();
                 }
             }
 
@@ -173,6 +149,42 @@ public class CharacterControl : MonoBehaviour
             case CharacterState.Dead:
                 print("I m dead!");
                 break;
+			case CharacterState.Shoot:
+				if (_isShurikenThrown == true)
+				{
+					if (_thrownShuriken != null)
+					{
+						if (Input.GetButtonDown("Fire2"))
+						{
+							//transform.position = new Vector3(_thrownShuriken.position.x, _thrownShuriken.position.y, transform.position.z);
+							_shurikenTargetPosition = new Vector3(_thrownShuriken.position.x, _thrownShuriken.position.y, transform.position.z);
+							
+							/*if (currentCharacterState != CharacterState.Dash)
+                        {
+                            CharacterIdle();
+                        }*/
+							
+							currentCharacterState = CharacterState.Teleport;
+							
+							_characterControlEnabled = false;
+							
+							_isShurikenThrown = false;
+							
+							CharacterFollow.characterFollowInstance.ChangeTargetToCharacter();
+							
+							_thrownShuriken.SendMessage("DestoryShuriken", SendMessageOptions.DontRequireReceiver);
+						}
+					} 
+					else
+					{
+						_isShurikenThrown = false;
+
+						_characterControlEnabled = true;
+
+						CharacterIdle();
+					}
+				}
+				break;
             }
         }
     }

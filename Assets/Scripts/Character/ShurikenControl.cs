@@ -70,6 +70,8 @@ public class ShurikenControl : MonoBehaviour
 	#region Methods
 	public void DestoryShuriken()
 	{
+		CharacterFollow.characterFollowInstance.ChangeTargetToCharacter();
+
 		Destroy(transform.gameObject);
 	}
 

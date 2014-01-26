@@ -10,34 +10,52 @@ public class CharacterFollow : MonoBehaviour
 	#endregion
 
 	#region Public Variables
-	public Transform	character;
+	public Transform	target;
 	public float		smooth;
+	public static CharacterFollow characterFollowInstance;
 	#endregion
 
 	#region Constructor
+	void Awake()
+	{
+		characterFollowInstance = this;
+	}
+	         
 	void Start() 
 	{
 		_defaultCharacterPosition = Vector2.zero;
 
-		character = GameObject.FindGameObjectWithTag("Player").transform;
+		target = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 	#endregion
 	
 	#region Loop
 	void Update() 
 	{
-		Vector3 cameraTargetPosition = character.position;
+		if(target != null)
+		{
+			Vector3 cameraTargetPosition = target.position;
 
-		Vector3 cameraPosition = transform.position;
+			Vector3 cameraPosition = transform.position;
 
-		cameraTargetPosition.z = cameraPosition.z;
+			cameraTargetPosition.z = cameraPosition.z;
 
-		cameraTargetPosition = Vector3.Slerp(cameraPosition, cameraTargetPosition, smooth * Time.deltaTime);
+			cameraTargetPosition = Vector3.Slerp(cameraPosition, cameraTargetPosition, smooth * Time.deltaTime);
 
-		transform.position = cameraTargetPosition;
+			transform.position = cameraTargetPosition;
+		}
 	}
 	#endregion
 
 	#region Methods
+	public void ChangeTargetToShuriken()
+	{
+		target = GameObject.FindGameObjectWithTag("Shuriken").transform;
+	}
+
+	public void ChangeTargetToCharacter()
+	{
+		target = GameObject.FindGameObjectWithTag("Player").transform;
+	}
 	#endregion
 }
