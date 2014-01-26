@@ -44,7 +44,6 @@ public class CharacterControl : MonoBehaviour
     public float            damageForce = 100f;
 
 	public float			inAirThreshold;
-	public float			landingThreshold;
     #endregion
 
     #region Constructor
@@ -264,19 +263,7 @@ public class CharacterControl : MonoBehaviour
 
 				if(currentCharacterState != CharacterState.TeleportKill)
 				{
-					if(distance > inAirThreshold)
-					{
-						CharacterInAir();
-
-						return false;
-					}
-					else if(distance > landingThreshold)
-					{
-						CharacterLanding();
-
-						return false;
-					}
-					else 
+					if(distance < inAirThreshold)
 					{
 						return true;
 					}
