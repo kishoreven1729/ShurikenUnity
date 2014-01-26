@@ -1,11 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
     public static GameManager Instance;
-    public GameObject[] checkPoints;
+//    public GameObject[] checkPoints;
+    public Dictionary<int, GameObject> checkPoints = new Dictionary<int, GameObject>();
     public int currentCheckPoint = 0;
+
+    public Dictionary<int, GameObject> CheckPoints
+    {
+        get
+        {
+            return checkPoints;
+        }
+        set
+        {
+            checkPoints = value;
+        }
+    }
 
     public int CurrentCheckPoint
     {

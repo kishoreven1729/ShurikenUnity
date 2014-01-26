@@ -389,7 +389,9 @@ public class CharacterControl : MonoBehaviour
         _isShurikenThrown = true;
 
         Vector2 character2DPosition = new Vector2(transform.position.x, transform.position.y);
-        Vector3 mousePosition3D = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
+
+        Vector3 mousePosition3D = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
         Vector2 mousePosition2D = new Vector2(mousePosition3D.x, mousePosition3D.y);
 
         Vector2 shurikenDirection = mousePosition2D - character2DPosition;
@@ -440,4 +442,12 @@ public class CharacterControl : MonoBehaviour
         }
     }
     #endregion
+
+    void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        print("mousePos: " + Input.mousePosition);
+        Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        print(pos);
+        Gizmos.DrawWireCube(pos, new Vector3(1f, 1f, 1f));
+    }
 }

@@ -8,7 +8,7 @@ public class CheckPoint : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        GameManager.Instance.CheckPoints.Add(id, gameObject);
 	}
 	
 	// Update is called once per frame
@@ -20,13 +20,17 @@ public class CheckPoint : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            print("Set checkpoint to: " + id);
-            GameManager.Instance.CurrentCheckPoint = id;
+            if (GameManager.Instance.CurrentCheckPoint < id)
+            {
+                print("Set checkpoint to: " + id);
+                GameManager.Instance.CurrentCheckPoint = id;
+            }
         }
     }
 
     public void Spawn()
     {
-        Instantiate(playerPrefab, transform.position, Quaternion.identity);
+        GameObject go = Instantiate(playerPrefab, transform.position, Quaternion.identity) as GameObject;
+        Camera.main.SendMessage("SetTarget", go);
     }
 }
