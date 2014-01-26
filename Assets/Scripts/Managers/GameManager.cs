@@ -41,4 +41,9 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void SpawnPlayerAtCheckPoint()
+    {
+        checkPoints[currentCheckPoint].SendMessage("Spawn");
+    }
 }

@@ -4,6 +4,7 @@ using System.Collections;
 public class CheckPoint : MonoBehaviour {
 
     public int id;
+    public GameObject playerPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -15,12 +16,17 @@ public class CheckPoint : MonoBehaviour {
 	
 	}
 
-    void OnCollisionEnter2D (Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.tag == "Player")
         {
             print("Set checkpoint to: " + id);
             GameManager.Instance.CurrentCheckPoint = id;
         }
+    }
+
+    public void Spawn()
+    {
+        Instantiate(playerPrefab, transform.position, Quaternion.identity);
     }
 }
