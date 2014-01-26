@@ -155,6 +155,8 @@ public class AudioManager : MonoBehaviour
 		_soundDictionary.Add("", AK.EVENTS.);
 		_soundDictionary.Add("", AK.EVENTS.);
 		_soundDictionary.Add("", AK.EVENTS.);*/
+
+		PlayBackgroundSound();
 	}
 	#endregion
 }

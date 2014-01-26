@@ -13,9 +13,7 @@ public class CharacterControl : MonoBehaviour
         Run,
         Dash,
         Shoot,
-        DashKill,
         Teleport,
-        TeleportKill,
         Dead
     }
     #endregion
@@ -101,7 +99,7 @@ public class CharacterControl : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.LeftShift))
                 {
-                    if (movementDirection != Vector2.zero)
+                    if (currentCharacterState == CharacterState.Run)
                     {
                         _characterControlEnabled = false;
                         
@@ -116,7 +114,7 @@ public class CharacterControl : MonoBehaviour
             {
                 if (Input.GetButtonDown("Fire1"))
                 {
-                    if (_thrownShuriken == null)
+                    if (GameManager.Instance._shurikenLaunched == false)
                     {
                         _characterControlEnabled = false;
 
@@ -126,7 +124,8 @@ public class CharacterControl : MonoBehaviour
             }
 
             UpdateCharacterState();
-        } else
+        } 
+		else
         {
             switch (currentCharacterState)
             {
@@ -136,19 +135,19 @@ public class CharacterControl : MonoBehaviour
                         _characterControlEnabled = true;
                     }
                     break;
-                case CharacterState.DashKill:
+                /*case CharacterState.DashKill:
                     _isShurikenThrown = false;
 
                     StartCoroutine("EnemyKill");
-                    break;
+                    break;*/
                 case CharacterState.Teleport:
                     StartCoroutine("TeleportCharacter");
                     break;
-                case CharacterState.TeleportKill:
+                /*case CharacterState.TeleportKill:
                     _isShurikenThrown = false;
 
                     StartCoroutine("EnemyKill");
-                    break;
+                    break;*/
                 case CharacterState.Dead:
                     print("I m dead!");
                     Destroy(gameObject);
@@ -204,8 +203,9 @@ public class CharacterControl : MonoBehaviour
             switch (currentCharacterState)
             {
                 case CharacterState.Dash:
-                    _characterControlEnabled = false;
-                    currentCharacterState = CharacterState.DashKill;
+                    /*_characterControlEnabled = false;
+                    currentCharacterState = CharacterState.DashKill;*/
+					coll.transform.SendMessage("OnDamage", SendMessageOptions.DontRequireReceiver);
                     break;
                 case CharacterState.Run:
                     rigidbody2D.AddForce(coll.contacts [0].normal * damageForce);
@@ -235,9 +235,9 @@ public class CharacterControl : MonoBehaviour
 
         if (coll.tag == "EnemyDeathArea")
         {
-            _characterControlEnabled = false;
+            //_characterControlEnabled = true;
 
-            currentCharacterState = CharacterState.TeleportKill;
+            //currentCharacterState = CharacterState.TeleportKill;
          
             coll.SendMessageUpwards("OnDamage");
         }
@@ -250,24 +250,22 @@ public class CharacterControl : MonoBehaviour
     {
         Vector3 groundDirection = _groundCheck.position - transform.position;
 
-        RaycastHit2D groundHit = Physics2D.Raycast(transform.position, groundDirection, 1000.0f, 1 << LayerMask.NameToLayer("Ground"));
+        RaycastHit2D groundHit = Physics2D.Raycast(transform.position, groundDirection, 100.0f, 1 << LayerMask.NameToLayer("Ground"));
 
         if (groundHit != null)
         {
-            Debug.Log(groundHit.transform.tag);
-
             if (groundHit.transform.tag == "Ground")
             {
                 float distance = Vector2.Distance(groundHit.point, new Vector2(transform.position.x, transform.position.y));
 
-                Debug.Log("distance");
-
-                if (currentCharacterState != CharacterState.TeleportKill)
+                if (distance < inAirThreshold)
                 {
-                    if (distance < inAirThreshold)
-                    {
-                        return true;
-                    }
+					Debug.Log("Touched Ground");
+
+					/*currentCharacterState = CharacterState.Idle;
+					CharacterIdle();*/
+
+                    return true;
                 }
             }
         }
@@ -290,7 +288,7 @@ public class CharacterControl : MonoBehaviour
                 CharacterDash();
                 break;
             case CharacterState.Shoot:
-                StartCoroutine("CharacterShoot");
+                CharacterShoot();
                 break;
             case CharacterState.Dead:
                 break;
@@ -360,7 +358,7 @@ public class CharacterControl : MonoBehaviour
         rigidbody2D.velocity = characterVelocity;
     }
     
-    public IEnumerator EnemyKill()
+   /* public IEnumerator EnemyKill()
     {
         ResetParameters();
 
@@ -384,7 +382,7 @@ public class CharacterControl : MonoBehaviour
         CharacterIdle();
 
         _characterControlEnabled = true;
-    }
+    }*/
 
     public IEnumerator TeleportCharacter()
     {
@@ -394,28 +392,31 @@ public class CharacterControl : MonoBehaviour
 
         float animationLength = 0.0f;
 
-        _characterAnimator.SetBool("TeleportDisappear", true);
+		transform.position = _shurikenTargetPosition;
+
+        _characterAnimator.SetBool("Teleport", true);
 
         animationLength = _characterAnimator.GetCurrentAnimatorStateInfo(0).length;
 
-        yield return new WaitForSeconds(animationLength);
+        //yield return new WaitForSeconds(animationLength);
 
-        ResetParameters();
-
-        transform.position = _shurikenTargetPosition;
+        /*ResetParameters();
 
         _characterAnimator.SetBool("TeleportReappear", true);
 
         animationLength = _characterAnimator.GetCurrentAnimatorStateInfo(0).length;
         
-        yield return new WaitForSeconds(animationLength);
+        yield return new WaitForSeconds(animationLength);*/
 
         _characterControlEnabled = true;
+
+		currentCharacterState = CharacterState.Idle;
+		CharacterIdle();
 
         yield return null;
     }
 
-    public IEnumerator CharacterShoot()
+    public void CharacterShoot()
     {
         if (GameManager.Instance._shurikenLaunched == false)
         {
@@ -444,10 +445,6 @@ public class CharacterControl : MonoBehaviour
 
             _characterAnimator.SetBool("Shoot", true);
 
-            float animationlength = _characterAnimator.GetCurrentAnimatorStateInfo(0).length;
-
-            yield return new WaitForSeconds(animationlength);
-
             _thrownShuriken = Instantiate(shurikenPrefab, _shurikenSpawnPoint.position, Quaternion.identity) as Transform;
             _thrownShuriken.name = "Shuriken";
 
@@ -455,11 +452,9 @@ public class CharacterControl : MonoBehaviour
 
             CharacterFollow.characterFollowInstance.ChangeTargetToShuriken();
 
-            currentCharacterState = CharacterState.Shoot;
+            //currentCharacterState = CharacterState.Shoot;
 
             _isShurikenThrown = true;
-
-            print("" + currentCharacterState);
         }
     }
 
@@ -470,10 +465,7 @@ public class CharacterControl : MonoBehaviour
         _characterAnimator.SetBool("Dash", false);
         _characterAnimator.SetBool("Dead", false);
         _characterAnimator.SetBool("Shoot", false);
-        _characterAnimator.SetBool("DashKill", false);
-        _characterAnimator.SetBool("TeleportReappear", false);
-        _characterAnimator.SetBool("TeleportDisappear", false);
-        _characterAnimator.SetBool("TeleportKill", false);
+        _characterAnimator.SetBool("Teleport", false);
         _characterAnimator.SetBool("InAir", false);
     }
     #endregion
