@@ -174,6 +174,7 @@ public class EnemyAI : MonoBehaviour
         print("Die()");
         animator.SetBool("die", true);
         state = EnemyState.None;
+        StopCoroutine("CheckState");
 //        Destroy(gameObject, 3f);
     }
 

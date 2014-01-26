@@ -1,82 +1,83 @@
 ﻿#region References
 using UnityEngine;
 using System.Collections;
+
 #endregion
 
-public class CharacterFollow : MonoBehaviour 
+public class CharacterFollow : MonoBehaviour
 {
-	#region Private Variables
-	private Vector2		_defaultCharacterPosition;
-	#endregion
+    #region Private Variables
+    private Vector2     _defaultCharacterPosition;
 
-	#region Public Variables
-<<<<<<< HEAD
-	public Transform	target;
-=======
-    public GameObject	target;
->>>>>>> 546c1415fb0a5867417863f9de0c91e547a8322d
-	public float		smooth;
-	public static CharacterFollow characterFollowInstance;
-	#endregion
+    private Vector2     _initialCameraPosition;
+    #endregion
 
-	#region Constructor
-	void Awake()
-	{
-		characterFollowInstance = this;
-	}
-	         
-	void Start() 
-	{
-		_defaultCharacterPosition = Vector2.zero;
-
-<<<<<<< HEAD
-		target = GameObject.FindGameObjectWithTag("Player").transform;
-=======
-        target = GameObject.FindGameObjectWithTag("Player");
->>>>>>> 546c1415fb0a5867417863f9de0c91e547a8322d
-	}
-	#endregion
-	
-	#region Loop
-	void Update() 
-	{
-<<<<<<< HEAD
-		if(target != null)
-		{
-			Vector3 cameraTargetPosition = target.position;
-=======
-        Vector3 cameraTargetPosition = target.transform.position;
->>>>>>> 546c1415fb0a5867417863f9de0c91e547a8322d
-
-			Vector3 cameraPosition = transform.position;
-
-			cameraTargetPosition.z = cameraPosition.z;
-
-			cameraTargetPosition = Vector3.Slerp(cameraPosition, cameraTargetPosition, smooth * Time.deltaTime);
-
-			transform.position = cameraTargetPosition;
-		}
-	}
-	#endregion
-
-	#region Methods
-<<<<<<< HEAD
-	public void ChangeTargetToShuriken()
-	{
-		target = GameObject.FindGameObjectWithTag("Shuriken").transform;
-	}
-
-	public void ChangeTargetToCharacter()
-	{
-		target = GameObject.FindGameObjectWithTag("Player").transform;
-	}
-=======
-
-    public void SetTarget(GameObject g)
+    #region Public Variables
+    public Transform    target;
+    public float        smooth;
+    public static CharacterFollow characterFollowInstance;
+    public float        yOffset;
+    #endregion
+    
+    #region Constructor
+    void Awake()
     {
-        target = g;
+        characterFollowInstance = this;
     }
+             
+    void Start()
+    {
+        _defaultCharacterPosition = Vector2.zero;
 
->>>>>>> 546c1415fb0a5867417863f9de0c91e547a8322d
-	#endregion
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+
+        _initialCameraPosition = target.position;
+        _initialCameraPosition.y += yOffset;
+    }
+    #endregion
+    
+    #region Loop
+    void Update()
+    {
+
+        if (target != null)
+        {
+            Vector3 cameraTargetPosition = target.position;
+
+            if(target.tag == "Player")
+            {
+                cameraTargetPosition.y += yOffset;
+            }
+       
+
+            if(cameraTargetPosition.y < _initialCameraPosition.y)
+            {
+                cameraTargetPosition.y = _initialCameraPosition.y;
+            }
+
+            Vector3 cameraPosition = transform.position;
+       
+
+            cameraTargetPosition.z = cameraPosition.z;
+       
+
+            cameraTargetPosition = Vector3.Slerp(cameraPosition, cameraTargetPosition, smooth * Time.deltaTime);
+       
+
+            transform.position = cameraTargetPosition;
+        }
+    }
+    #endregion
+    
+    #region Methods
+    public void ChangeTargetToShuriken()
+    {
+        target = GameObject.FindGameObjectWithTag("Shuriken").transform;
+    }
+   
+    public void ChangeTargetToCharacter()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+    #endregion
 }

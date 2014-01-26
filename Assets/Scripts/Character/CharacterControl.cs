@@ -386,6 +386,8 @@ public class CharacterControl : MonoBehaviour
 
     private void CharacterShoot()
     {
+        print("CharacterShoot");
+
         _isShurikenThrown = true;
 
         Vector2 character2DPosition = new Vector2(transform.position.x, transform.position.y);
@@ -430,24 +432,27 @@ public class CharacterControl : MonoBehaviour
     #region Public Methods
     public void OnDamage(int damage)
     {
-        characterHealth--;
-
-        if (characterHealth <= 0)
+        if(currentCharacterState != CharacterState.Dash)
         {
-            currentCharacterState = CharacterState.Dead;
+            characterHealth--;
 
-            _characterControlEnabled = false;
+            if (characterHealth <= 0)
+            {
+                currentCharacterState = CharacterState.Dead;
 
-            characterHealth = _maxCharacterHealth;
+                _characterControlEnabled = false;
+
+                characterHealth = _maxCharacterHealth;
+            }
         }
     }
     #endregion
 
-    void OnDrawGizmos() {
-        Gizmos.color = Color.red;
-        print("mousePos: " + Input.mousePosition);
-        Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        print(pos);
-        Gizmos.DrawWireCube(pos, new Vector3(1f, 1f, 1f));
-    }
+//    void OnDrawGizmos() {
+//        Gizmos.color = Color.red;
+//        print("mousePos: " + Input.mousePosition);
+//        Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+//        print(pos);
+//        Gizmos.DrawWireCube(pos, new Vector3(1f, 1f, 1f));
+//    }
 }

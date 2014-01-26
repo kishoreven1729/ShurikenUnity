@@ -62,9 +62,15 @@ public class ShurikenControl : MonoBehaviour
             Vector2 n = collision.contacts[0].normal;
             rigidbody2D.velocity = n * deflectForce;
             Debug.DrawRay(collision.transform.position, n * deflectForce);
+
             Destroy(gameObject, .5f);
         }
 	}                      
+
+    void OnDestroy()
+    {
+        CharacterFollow.characterFollowInstance.ChangeTargetToCharacter();
+    }
 	#endregion
 
 	#region Methods

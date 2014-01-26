@@ -28,9 +28,12 @@ public class Switch : MonoBehaviour {
 
         if (other.gameObject.tag == "Player")
         {
+            if(state == SwitchState.Off)
+            {
             sr.sprite = switchOn;
             state = SwitchState.On;
             door.SendMessage("CheckCondition");
+            }
         }
     }
 
