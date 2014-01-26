@@ -114,10 +114,6 @@ public class CharacterControl : MonoBehaviour
 					_characterControlEnabled = false;
 
 					currentCharacterState = CharacterState.Shoot;
-
-                    CharacterShoot();
-
-					CharacterFollow.characterFollowInstance.ChangeTargetToShuriken();
                 }
             }
 
@@ -250,17 +246,20 @@ public class CharacterControl : MonoBehaviour
     {
         switch (currentCharacterState)
         {
-            case CharacterState.Idle:
-                CharacterIdle();
-                break;
-            case CharacterState.Run:
-                CharacterRun();
-                break;
-            case CharacterState.Dash:
-                CharacterDash();
-                break;
-            case CharacterState.Dead:
-                break;
+        case CharacterState.Idle:
+            CharacterIdle();
+            break;
+        case CharacterState.Run:
+            CharacterRun();
+            break;
+        case CharacterState.Dash:
+            CharacterDash();
+            break;
+		case CharacterState.Shoot:
+			StartCoroutine("CharacterShoot");
+			break;
+        case CharacterState.Dead:
+            break;
         }
     }
 
@@ -384,10 +383,8 @@ public class CharacterControl : MonoBehaviour
 		_characterControlEnabled = true;
 	}
 
-    private void CharacterShoot()
+    public IEnumerator CharacterShoot()
     {
-        print("CharacterShoot");
-
         _isShurikenThrown = true;
 
         Vector2 character2DPosition = new Vector2(transform.position.x, transform.position.y);
@@ -399,7 +396,7 @@ public class CharacterControl : MonoBehaviour
         Vector2 shurikenDirection = mousePosition2D - character2DPosition;
         shurikenDirection.Normalize();
 
-        if (shurikenDirection.x < 0.0f)
+		if (shurikenDirection.x < 0.0f)
         {
             transform.localScale = new Vector3(-1, 1, 1);
         } else
@@ -407,10 +404,20 @@ public class CharacterControl : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
         }
 
+		ResetParameters();
+
+		_characterAnimator.SetBool("Shoot", true);
+
+		float animationlength = _characterAnimator.GetCurrentAnimatorStateInfo(0).length;
+
+		yield return new WaitForSeconds(animationlength);
+
         _thrownShuriken = Instantiate(shurikenPrefab, _shurikenSpawnPoint.position, Quaternion.identity) as Transform;
         _thrownShuriken.name = "Shuriken";
 
         _thrownShuriken.SendMessage("SetupShot", shurikenDirection, SendMessageOptions.DontRequireReceiver);
+
+		CharacterFollow.characterFollowInstance.ChangeTargetToShuriken();
     }
 
     private void ResetParameters()
